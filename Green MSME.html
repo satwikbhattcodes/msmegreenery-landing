@@ -805,7 +805,7 @@
         <div class="hero-stats reveal reveal-d5" id="hero-stats" data-style="bordered">
           <div class="hero-stat">
             <span class="k">Reach</span>
-            <span class="n"><span class="count" data-to="1000" data-key="msmes">0</span><span class="u">+</span></span>
+            <span class="n"><span class="count" data-api-metric="msmesReached" data-to="1000" data-key="msmes">0</span><span class="u">+</span></span>
             <span class="l">MSME<span class="lc">s</span> Reached</span>
             <span class="d">Enterprises engaged for sustainability awareness.</span>
           </div>
@@ -1017,7 +1017,7 @@
       <div class="stat-card reveal reveal-d1">
         <div class="stat-top">
           <div class="stat-label">01 · Awareness</div>
-          <div class="stat-value"><span class="count" data-to="1000">0</span><span class="unit">+</span></div>
+          <div class="stat-value"><span class="count" data-api-metric="msmesReached" data-to="1000">0</span><span class="unit">+</span></div>
         </div>
         <div class="stat-bottom">
           <div class="stat-desc">MSMEs reached for awareness.</div>
@@ -1073,7 +1073,7 @@
       <div class="stat-card reveal reveal-d1">
         <div class="stat-top">
           <div class="stat-label">05 · Workshops</div>
-          <div class="stat-value"><span class="count" data-to="10">0</span></div>
+          <div class="stat-value"><span class="count" data-api-metric="workshopsConducted" data-to="10">0</span></div>
         </div>
         <div class="stat-bottom">
           <div class="stat-desc">Capacity-building workshops conducted.</div>
@@ -1087,7 +1087,7 @@
       <div class="stat-card reveal reveal-d2">
         <div class="stat-top">
           <div class="stat-label">06 · Participants</div>
-          <div class="stat-value"><span class="count" data-to="500">0</span><span class="unit">+</span></div>
+          <div class="stat-value"><span class="count" data-api-metric="participantsTrained" data-to="500">0</span><span class="unit">+</span></div>
         </div>
         <div class="stat-bottom">
           <div class="stat-desc">Stakeholders trained through workshops.</div>
@@ -1125,6 +1125,50 @@
           </svg>
         </div>
       </div>
+
+      <div class="stat-card reveal reveal-d1">
+        <div class="stat-top">
+          <div class="stat-label">09 · Proposals Created</div>
+          <div class="stat-value"><span class="count" data-api-metric="proposalsCreated" data-to="240">0</span></div>
+        </div>
+        <div class="stat-bottom">
+          <div class="stat-desc">Green investment proposals drawn up after assessment.</div>
+        </div>
+      </div>
+
+      <div class="stat-card reveal reveal-d2">
+        <div class="stat-top">
+          <div class="stat-label">10 · Proposals Implemented</div>
+          <div class="stat-value"><span class="count" data-api-metric="proposalsImplemented" data-to="130">0</span></div>
+        </div>
+        <div class="stat-bottom">
+          <div class="stat-desc">Proposals taken through to installation on the shop floor.</div>
+        </div>
+      </div>
+
+      <div class="stat-card reveal reveal-d3" data-breakdown="cost">
+        <div class="stat-top">
+          <div class="stat-label">11 · Cost Savings</div>
+          <div class="stat-value">₹<span class="count" data-api-metric="cost" data-to="3.6" data-decimals="2">0</span><span class="unit">Cr/yr</span></div>
+        </div>
+        <div class="stat-bottom">
+          <div class="stat-desc">Annual cost savings quantified by completed assessments.</div>
+          <svg class="stat-sparkline" data-api-spark="cost" width="80" height="40" viewBox="0 0 80 40" fill="none">
+            <path d="M0 32 L16 28 L32 24 L48 16 L64 10 L80 6" stroke="rgba(14,26,20,.15)" stroke-width="1.5"/>
+            <path class="draw" style="--len:200" d="M0 32 L16 28 L32 24 L48 16 L64 10 L80 6" stroke="var(--forest)" stroke-width="1.5"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="stat-card reveal reveal-d4" data-breakdown="eois">
+        <div class="stat-top">
+          <div class="stat-label">12 · Clusters Covered</div>
+          <div class="stat-value"><span class="count" data-api-metric="clusters" data-to="20">0</span></div>
+        </div>
+        <div class="stat-bottom">
+          <div class="stat-desc">Industrial clusters with at least one EoI received.</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1147,7 +1191,7 @@
 
         <!-- Metric tiles -->
         <div class="map-tiles" id="map-tiles">
-          <div class="map-tile" data-tile="active">
+          <div class="map-tile" data-tile="active" data-breakdown="msmesIdentified">
             <div class="map-tile-icon mt-em"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
             <div class="map-tile-body"><div class="map-tile-label">MSME<span class="lc">s</span> Identified</div><div class="map-tile-val" id="mt-active">35,102</div></div>
           </div>
@@ -1413,24 +1457,24 @@
     <div class="mm-stats">
       <div class="mm-stat reveal reveal-d1">
         <div class="k">Vendor Matches</div>
-        <div class="v"><span class="count" data-to="310">0</span></div>
+        <div class="v"><span class="count" data-api-metric="vendorMatches" data-to="310">0</span></div>
         <div class="d">MSMEs matched with technology providers.</div>
       </div>
 
       <div class="mm-stat reveal reveal-d2">
         <div class="k">Financial Partners</div>
-        <div class="v"><span class="count" data-to="25">0</span></div>
+        <div class="v"><span class="count" data-api-metric="financialPartners" data-to="25">0</span></div>
         <div class="d">Financial institutions engaged in the platform.</div>
       </div>
       <div class="mm-stat reveal reveal-d3">
         <div class="k">Deals Closed</div>
-        <div class="v"><span class="count" data-to="145">0</span></div>
+        <div class="v"><span class="count" data-api-metric="dealsClosed" data-to="145">0</span></div>
         <div class="d">Successful investment deals executed.</div>
       </div>
-      <div class="mm-stat reveal reveal-d4" data-breakdown="cost">
-        <div class="k">Cost Savings Identified</div>
-        <div class="v">₹<span class="count" data-api-metric="cost" data-to="100">0</span><span style="font-size:36px;font-weight:600;opacity:1"> Cr</span></div>
-        <div class="d">Annual cost savings quantified by completed assessments.</div>
+      <div class="mm-stat reveal reveal-d4">
+        <div class="k">Loan Volume</div>
+        <div class="v">₹<span class="count" data-api-metric="loanVolume" data-to="100">0</span><span style="font-size:36px;font-weight:600;opacity:1"> Cr</span></div>
+        <div class="d">Loan applications facilitated through the platform.</div>
       </div>
     </div>
 
@@ -1486,8 +1530,8 @@
           </div>
         </div>
         <div class="eco-card-stats">
-          <div class="eco-chip"><div class="n"><span class="count" data-to="10">0</span></div><div class="l">Conducted</div></div>
-          <div class="eco-chip"><div class="n"><span class="count" data-to="500">0</span>+</div><div class="l">Participants</div></div>
+          <div class="eco-chip"><div class="n"><span class="count" data-api-metric="workshopsConducted" data-to="10">0</span></div><div class="l">Conducted</div></div>
+          <div class="eco-chip"><div class="n"><span class="count" data-api-metric="participantsTrained" data-to="500">0</span>+</div><div class="l">Participants</div></div>
           <div class="eco-chip"><div class="n"><span class="count" data-api-metric="sectors" data-to="15">0</span></div><div class="l">Sectors Covered</div></div>
         </div>
       </div>
@@ -3848,6 +3892,7 @@
 (function(){
   const ANALYTICS_BASE = 'https://dev-workflow.metaversedu.in/api/v1';
   const ENDPOINT       = ANALYTICS_BASE + '/eoi-analytics';
+  const SITE_ENDPOINT  = ANALYTICS_BASE + '/website-data';
   const PAGE_SIZE      = 200;
   const MAX_PAGES      = 50;          // hard stop, guards a runaway pager
   const TIMEOUT_MS     = 12000;
@@ -4063,6 +4108,53 @@
     return Number.isNaN(t.getTime()) ? null : t.toISOString().slice(0, 10);
   };
 
+  /* /website-data holds the figures the assessment records cannot produce:
+     outreach, the identified-MSME base, workshops, matchmaking, proposals.
+     The newest record wins; a failure here leaves those values static. */
+  async function fetchSiteData(){
+    const ctrl = new AbortController();
+    const timer = setTimeout(()=>ctrl.abort(), TIMEOUT_MS);
+    try {
+      const res = await fetch(SITE_ENDPOINT, { headers:{ 'accept':'*/*' }, signal: ctrl.signal });
+      if(!res.ok) throw new Error('HTTP ' + res.status);
+      const body = await res.json();
+      const list = Array.isArray(body && body.data) ? body.data
+                 : (body && body.data ? [body.data] : []);
+      if(!list.length) return null;
+      return list.slice().sort((a,b) =>
+        new Date(b.updatedAt || b.createdAt || 0) - new Date(a.updatedAt || a.createdAt || 0)
+      )[0];
+    } finally { clearTimeout(timer); }
+  }
+
+  function applySiteData(agg, site){
+    if(!site) return agg;
+    agg.site = site;
+    const n = k => { const v = num(site[k]); return v > 0 ? v : null; };
+
+    const map = {
+      msmesReached:         n('msmesReached'),
+      msmesIdentified:      n('msmesIdentified'),
+      workshopsConducted:   n('workshopsConducted'),
+      participantsTrained:  n('participantsTrained'),
+      vendorMatches:        n('vendorMatches'),
+      financialPartners:    n('financialPartners'),
+      dealsClosed:          n('dealsClosed'),
+      proposalsCreated:     n('proposalsCreated'),
+      proposalsImplemented: n('proposalsImplemented'),
+      loanVolume:           n('loanVolumeInLakhs') ? num(site.loanVolumeInLakhs) / 100 : null,  // lakhs -> Cr
+    };
+    Object.entries(map).forEach(([k, v]) => { if(v !== null) agg[k] = v; });
+
+    agg.msmesByDistrict = new Map(Object.entries(site.msmesIdentifiedByDistrict || {}));
+    agg.msmesBySector   = new Map(Object.entries(site.sectorMsmeCount || {}));
+    const siteStamp = new Date(site.updatedAt || site.createdAt);
+    if(!Number.isNaN(siteStamp.getTime()) && (!agg.lastUpdate || siteStamp > agg.lastUpdate)){
+      agg.lastUpdate = siteStamp;
+    }
+    return agg;
+  }
+
   function aggregate(rows, totalElements){
     const bySector   = new Map();  // key -> bucket (+ .label)
     const byCluster  = new Map();
@@ -4255,6 +4347,13 @@
     const map = window.MSME_MAP;
     if(!map) return;
 
+    if(agg.msmesIdentified > 0) map.GLOBAL.active = agg.msmesIdentified;
+    if(agg.msmesByDistrict && agg.msmesByDistrict.size){
+      agg.msmesByDistrict.forEach((count, name) => {
+        const row = map.CLUSTERS.find(d => d.name.toLowerCase() === String(name).trim().toLowerCase());
+        if(row && num(count) > 0) row.msmes = num(count);
+      });
+    }
     if(agg.eois > 0)        map.GLOBAL.eois = agg.eois;
     if(agg.assessments > 0) map.GLOBAL.assessments = agg.assessments;
     if(agg.co2 > 0)         map.GLOBAL.savings = agg.co2;
@@ -4355,11 +4454,23 @@
     const totalEois = Math.max(1, sectors.reduce((t,s)=>t+s.eois, 0));
     const nodes = [];
 
-    sectors.forEach(s => nodes.push({
-      name: s.name, type:'sector', bd: 'sector:' + s.key,
-      val: s.eois.toLocaleString(),
-      pct: ((s.eois / totalEois) * 100).toFixed(1) + '%'
-    }));
+    // sectorMsmeCount is keyed by the programme's own sector labels
+    const sectorPop = new Map();
+    (agg.msmesBySector || new Map()).forEach((count, label) => {
+      sectorPop.set(classifySector(label).key, num(count));
+    });
+    const popTotal = [...sectorPop.values()].reduce((t,v) => t + v, 0);
+
+    sectors.forEach(s => {
+      const pop = sectorPop.get(s.key) || 0;
+      nodes.push({
+        name: s.name, type:'sector', bd: 'sector:' + s.key,
+        val: (pop || s.eois).toLocaleString(),
+        pct: pop && popTotal
+          ? ((pop / popTotal) * 100).toFixed(1) + '% of MSMEs'
+          : ((s.eois / totalEois) * 100).toFixed(1) + '% of EoIs'
+      });
+    });
     clusters.forEach(c => nodes.push({
       name: c.name, type:'cluster', bd: 'cluster:' + c.name,
       val: c.eois.toLocaleString(),
@@ -4403,6 +4514,7 @@
     const ft = document.getElementById('fp-ft');
     if(ft){
       const parts = [
+        ...(agg.msmesIdentified ? [agg.msmesIdentified.toLocaleString() + ' MSMEs Identified'] : []),
         agg.eois.toLocaleString() + ' EoIs',
         agg.assessments.toLocaleString() + ' Assessments',
         agg.co2.toFixed(2) + ' ktCO2e Savings',
@@ -4432,6 +4544,8 @@
     eois:        { label:'EoIs Received',    color:'#3a7a52', pick: b => b.eois,
                    unit: () => ({ div:1, sfx:' EoIs' }) },
     assessments: { label:'Assessments Done', color:'#3a7a52', pick: b => b.asmts,
+                   unit: () => ({ div:1, sfx:' MSMEs' }) },
+    msmesIdentified: { label:'MSMEs Identified', color:'#3a7a52', pick: b => b.msmes || 0,
                    unit: () => ({ div:1, sfx:' MSMEs' }) },
     perMsme:     { label:'tCO₂ per MSME', color:'#3a7a52',
                    pick: b => b.asmts ? b.tco2 / b.asmts : 0,
@@ -4478,6 +4592,23 @@
   function metricHtml(agg, key){
     const m = METRICS[key];
     if(!m) return '';
+
+    // the identified-MSME base is a programme figure, split by district and sector
+    if(key === 'msmesIdentified'){
+      const byDistrict = [...(agg.msmesByDistrict || new Map()).entries()]
+        .map(([name, v]) => ({ name, msmes: num(v) }));
+      const bySectorPop = [...(agg.msmesBySector || new Map()).entries()]
+        .map(([name, v]) => ({ name, msmes: num(v) }));
+      if(!byDistrict.length && !bySectorPop.length) return '';
+      return `
+        <div class="bd-tip-hd">${m.label}</div>
+        <div class="bd-tip-tot">${inr(agg.msmesIdentified || 0)} MSMEs</div>
+        <div class="bd-tip-sec"><span>By district</span><span>${byDistrict.length}</span></div>
+        ${rows(byDistrict, m)}
+        <div class="bd-tip-sec"><span>By sector</span><span>${bySectorPop.length}</span></div>
+        ${rows(bySectorPop, m)}`;
+    }
+
     const sectors  = [...agg.bySector.values()];
     const clusters = [...agg.byCluster.values()];
     const totalPick = key === 'perMsme'
@@ -4591,35 +4722,56 @@
     const stamp = (agg.lastUpdate || agg.fetchedAt).toLocaleString('en-IN', {
       day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit'
     });
-    meta.innerHTML = `Updated · ${stamp}<br/>Live data · EOI analytics API<br/>`
-      + `${agg.eois.toLocaleString()} EoIs · ${agg.assessments.toLocaleString()} assessed · `
-      + `${agg.sectors} sector${agg.sectors===1?'':'s'} · ${agg.clusters} cluster${agg.clusters===1?'':'s'} · `
-      + `${agg.districts} district${agg.districts===1?'':'s'}`;
+    const src = agg.sources || { eoiAnalytics:true, websiteData:false };
+    const live = [src.eoiAnalytics && 'EOI analytics', src.websiteData && 'website data']
+      .filter(Boolean).join(' + ');
+    const detail = src.eoiAnalytics
+      ? `${agg.eois.toLocaleString()} EoIs · ${agg.assessments.toLocaleString()} assessed · `
+        + `${agg.sectors} sector${agg.sectors===1?'':'s'} · ${agg.clusters} cluster${agg.clusters===1?'':'s'} · `
+        + `${agg.districts} district${agg.districts===1?'':'s'}`
+      : `${(agg.msmesIdentified || 0).toLocaleString()} MSMEs identified · `
+        + `${(agg.msmesReached || 0).toLocaleString()} reached · assessment data unavailable`;
+    meta.innerHTML = `Updated · ${stamp}<br/>Live data · ${live || 'static values'}<br/>${detail}`;
   }
 
+  /* The two sources fail independently: a locked eoi-analytics must not
+     blank the programme figures, and vice versa. */
   async function refresh(){
-    try {
-      const { rows, totalElements } = await fetchAll();
-      const agg = aggregate(rows, totalElements);
-      window.MSMEAnalytics.data  = agg;
-      window.MSMEAnalytics.error = null;
-      paintCounters(agg);
+    const [eoiRes, siteRes] = await Promise.allSettled([fetchAll(), fetchSiteData()]);
+
+    const eoiOk  = eoiRes.status === 'fulfilled';
+    const siteOk = siteRes.status === 'fulfilled' && siteRes.value;
+    if(!eoiOk)  console.warn('[eoi-analytics] unavailable, assessment figures stay static:', eoiRes.reason && eoiRes.reason.message);
+    if(siteRes.status === 'rejected') console.warn('[website-data] unavailable, programme figures stay static:', siteRes.reason && siteRes.reason.message);
+    if(!eoiOk && !siteOk){
+      window.MSMEAnalytics.error = eoiRes.reason || siteRes.reason;
+      return null;
+    }
+
+    const base = eoiOk ? aggregate(eoiRes.value.rows, eoiRes.value.totalElements)
+                       : aggregate([], 0);
+    const agg  = applySiteData(base, siteOk ? siteRes.value : null);
+    agg.sources = { eoiAnalytics: eoiOk, websiteData: !!siteOk };
+
+    window.MSMEAnalytics.data  = agg;
+    window.MSMEAnalytics.error = eoiOk ? null : (eoiRes.reason || null);
+
+    paintCounters(agg);
+    if(eoiOk){
       paintMap(agg);
       paintSectors(agg);
       paintFlow(agg);
       paintSparklines(agg);
-      paintMeta(agg);
-      wireBreakdowns();
-      document.dispatchEvent(new CustomEvent('msme:analytics', { detail: agg }));
-      return agg;
-    } catch(err){
-      window.MSMEAnalytics.error = err;
-      console.warn('[eoi-analytics] live data unavailable, using static values:', err.message);
-      return null;
+    } else if(siteOk){
+      paintMap(agg);                        // identified-MSME base still applies
     }
+    paintMeta(agg);
+    wireBreakdowns();
+    document.dispatchEvent(new CustomEvent('msme:analytics', { detail: agg }));
+    return agg;
   }
 
-  window.MSMEAnalytics = { endpoint: ENDPOINT, data: null, error: null, refresh,
+  window.MSMEAnalytics = { endpoint: ENDPOINT, siteEndpoint: SITE_ENDPOINT, data: null, error: null, refresh,
                            classifySector, resolveDistrict, CLUSTER_MASTER, CLUSTER_ALIASES };
 
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', refresh);
