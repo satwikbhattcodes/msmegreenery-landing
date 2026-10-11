@@ -1160,13 +1160,17 @@
         </div>
       </div>
 
-      <div class="stat-card reveal reveal-d4" data-breakdown="eois">
+      <div class="stat-card reveal reveal-d4" data-breakdown="water">
         <div class="stat-top">
-          <div class="stat-label">12 · Clusters Covered</div>
-          <div class="stat-value"><span class="count" data-api-metric="clusters" data-to="20">0</span></div>
+          <div class="stat-label">12 · Water Saved</div>
+          <div class="stat-value"><span class="count" data-api-metric="kl" data-to="12">0</span><span class="unit">kL/year</span></div>
         </div>
         <div class="stat-bottom">
-          <div class="stat-desc">Industrial clusters with at least one EoI received.</div>
+          <div class="stat-desc">Annual water savings identified by assessments.</div>
+          <svg class="stat-sparkline" data-api-spark="water" width="80" height="40" viewBox="0 0 80 40" fill="none">
+            <path d="M0 33 L16 29 L32 26 L48 18 L64 12 L80 7" stroke="rgba(14,26,20,.15)" stroke-width="1.5"/>
+            <path class="draw" style="--len:200" d="M0 33 L16 29 L32 26 L48 18 L64 12 L80 7" stroke="var(--forest)" stroke-width="1.5"/>
+          </svg>
         </div>
       </div>
     </div>
@@ -2067,10 +2071,10 @@
       names.forEach(n => {
         const b = LIVE.byDistrict.get(n);
         if(!b) return;
-        if(!hit) hit = { name:b.name, eois:0, asmts:0, tco2:0, kwh:0, lakhs:0,
+        if(!hit) hit = { name:b.name, eois:0, asmts:0, tco2:0, kwh:0, lakhs:0, kl:0,
                          clusters:new Map(), sectors:new Map() };
         hit.eois += b.eois; hit.asmts += b.asmts;
-        hit.tco2 += b.tco2; hit.kwh += b.kwh; hit.lakhs += b.lakhs;
+        hit.tco2 += b.tco2; hit.kwh += b.kwh; hit.lakhs += b.lakhs; hit.kl += b.kl;
         b.clusters.forEach((v,k)=>hit.clusters.set(k,(hit.clusters.get(k)||0)+v));
         b.sectors.forEach((v,k)=>hit.sectors.set(k,(hit.sectors.get(k)||0)+v));
       });
@@ -2277,6 +2281,7 @@
           ${kpi('Assessments', inr(l.asmts))}
           ${kpi('CO₂ Saved', l.tco2 >= 1000 ? inr(l.tco2/1000) : inr(l.tco2), l.tco2 >= 1000 ? 'ktCO2e' : 'tCO2e')}
           ${kpi('Energy', l.kwh >= 1e6 ? inr(l.kwh/1e6) : inr(l.kwh), l.kwh >= 1e6 ? 'MU/yr' : 'kWh/yr')}
+          ${kpi('Water', l.kl >= 1000 ? inr(l.kl/1000) : inr(l.kl), l.kl >= 1000 ? 'ML/yr' : 'kL/yr')}
           ${kpi('Cost', '₹' + (l.lakhs >= 100 ? inr(l.lakhs/100) : inr(l.lakhs)), l.lakhs >= 100 ? 'Cr' : 'Lakh')}
         </div>
         <div class="mp-card" data-breakdown="cluster-district:${dName}">
@@ -3922,7 +3927,7 @@
 
   function classifySector(raw){
     const name = String(raw || '').trim();
-    if(!name) return { key:'unclassified', label:'Unclassified' };
+    if(!name) return { key:'unspecified', label:'Sector not specified' };
     for(const [re, key, label] of SECTOR_RULES){
       if(re.test(name)) return { key, label };
     }
@@ -3965,6 +3970,9 @@
      but are not themselves programme clusters. Used only when the cluster
      master has no match. */
   const CLUSTER_ALIASES = {
+    'hitech city':'Hyderabad', 'hitec city':'Hyderabad', 'madhapur':'Hyderabad',
+    'gachibowli':'Hyderabad', 'nanakramguda':'Hyderabad', 'kondapur':'Hyderabad',
+    'genome valley':'Medchal-Malkajgiri', 'shamirpet':'Medchal-Malkajgiri',
     'azamabad':'Hyderabad', 'sanathnagar':'Hyderabad', 'moosapet':'Hyderabad',
     'musheerabad':'Hyderabad', 'amberpet':'Hyderabad', 'begumpet':'Hyderabad',
     'hyderabad':'Hyderabad', 'secunderabad':'Hyderabad',
@@ -4024,7 +4032,7 @@
     const raw = String(clusterName || '').trim();
     if(!raw) return null;
     const norm = normCluster(raw);
-    if(!norm) return null;
+    if(!norm) return OTHER_DISTRICT;   // name was nothing but filler words
 
     const canon = d => {
       const hit = (knownDistricts || []).find(k => squash(k) === squash(d));
@@ -4081,7 +4089,7 @@
   /* ---------------- group ---------------- */
   function blank(name){
     return { name, eois:0, asmts:0, detailed:0, walkthrough:0, withSavings:0,
-             kwh:0, lakhs:0, tco2:0 };
+             kwh:0, lakhs:0, tco2:0, kl:0 };
   }
   function add(bucket, r){
     bucket.eois++;
@@ -4096,6 +4104,7 @@
     bucket.kwh   += num(r.electricitySavingsInKwh);
     bucket.lakhs += num(r.costSavingsInLakhs);
     bucket.tco2  += t;
+    bucket.kl    += num(r.waterSavingsInKl);
   }
 
   const ym = d => {
@@ -4255,7 +4264,8 @@
       walkthrough: totals.walkthrough,
       sectors:     bySector.size,
       clusters:    byCluster.size,
-      kwh: totals.kwh, lakhs: totals.lakhs, tco2: totals.tco2,
+      kwh: totals.kwh, lakhs: totals.lakhs, tco2: totals.tco2, kl: totals.kl,
+      water: totals.kl / 1000,        // kl -> ML
       co2:    totals.tco2 / 1000,   // tCO2e -> ktCO2e
       energy: totals.kwh  / 1e6,    // kWh   -> MU (million units)
       cost:   totals.lakhs / 100,   // lakhs -> ₹ crore
@@ -4291,6 +4301,7 @@
     co2:         (b, run) => run.tco2  += b.tco2,
     energy:      (b, run) => run.kwh   += b.kwh,
     cost:        (b, run) => run.lakhs += b.lakhs,
+    water:       (b, run) => run.kl    += b.kl,
     sectors:     (b, run) => { b.sectorKeys.forEach(k => run.seen.add(k)); return run.seen.size; },
   };
 
@@ -4303,7 +4314,7 @@
     const buckets = agg.monthly.length >= 3 ? agg.monthly
                   : (agg.daily.length >= 3 ? agg.daily : null);
     if(!buckets) return null;
-    const run = { eois:0, asmts:0, tco2:0, kwh:0, lakhs:0, seen:new Set() };
+    const run = { eois:0, asmts:0, tco2:0, kwh:0, lakhs:0, kl:0, seen:new Set() };
     const pts = buckets.map(b => pick(b, run));
     return pts.every(v => v === pts[0]) ? null : pts;
   }
@@ -4389,11 +4400,13 @@
   function paintSectors(agg){
     if(!agg.bySector.size) return;
 
-    const ordered = [...agg.bySector.values()].sort((a,b) => b.eois - a.eois);
+    const rank = b => (b.key === 'unspecified' ? 1 : 0);
+    const ordered = [...agg.bySector.values()]
+      .sort((a,b) => rank(a) - rank(b) || b.eois - a.eois);
     const maxCo2    = Math.max(...ordered.map(s => s.tco2 / 1000), 0.001);
     const maxEnergy = Math.max(...ordered.map(s => s.kwh / 1e6),   0.001);
     const maxCost   = Math.max(...ordered.map(s => s.lakhs / 100), 0.001);
-    const maxPerMsme= Math.max(...ordered.map(s => s.asmts ? s.tco2 / s.asmts : 0), 0.001);
+    const maxWater  = Math.max(...ordered.map(s => s.kl), 0.001);
 
     // keep big numbers readable: fewer decimals as magnitude grows
     const dec = v => v >= 1000 ? 0 : (v >= 10 ? 1 : 2);
@@ -4413,8 +4426,7 @@
           { label:'CO₂ Reduced', val: s.tco2/1000,  unit:'ktCO2e',  dec:dec(s.tco2/1000), max:maxCo2 },
           { label:'Energy Saved',val: s.kwh/1e6,    unit:'MU/year', dec:dec(s.kwh/1e6),   max:maxEnergy },
           { label:'Cost Saved',  val: s.lakhs/100,  unit:'Cr',      dec:dec(s.lakhs/100), max:maxCost, prefix:'₹' },
-          { label:'tCO₂ / MSME', val: s.asmts ? s.tco2/s.asmts : 0, unit:'tCO2e',
-            dec: dec(s.asmts ? s.tco2/s.asmts : 0), max:maxPerMsme },
+          { label:'Water Saved', val: s.kl, unit:'kL/year', dec:dec(s.kl), max:maxWater },
         ],
       };
     });
@@ -4445,7 +4457,9 @@
   function paintFlow(agg){
     if(!window.MSME_FLOW || !agg.bySector.size || !agg.byCluster.size) return;
 
-    const sectors  = [...agg.bySector.values()].sort((a,b)=>b.eois-a.eois).slice(0, MAX_FLOW_SECTORS);
+    const sectors  = [...agg.bySector.values()]
+      .sort((a,b) => (a.key === 'unspecified' ? 1 : 0) - (b.key === 'unspecified' ? 1 : 0) || b.eois - a.eois)
+      .slice(0, MAX_FLOW_SECTORS);
     const clusters = [...agg.byCluster.values()].sort((a,b)=>b.eois-a.eois).slice(0, MAX_FLOW_CLUSTERS);
     const sIdx = new Map(sectors.map((s,i)=>[s.key, i]));
     const cIdx = new Map(clusters.map((c,i)=>[c.name, sectors.length + i]));
@@ -4461,12 +4475,15 @@
     });
     const popTotal = [...sectorPop.values()].reduce((t,v) => t + v, 0);
 
+    // one denominator for the whole column: MSME population only when every
+    // sector on show has it, otherwise EoIs for all of them
+    const popForAll = sectors.length > 0 && sectors.every(s => (sectorPop.get(s.key) || 0) > 0);
     sectors.forEach(s => {
       const pop = sectorPop.get(s.key) || 0;
       nodes.push({
         name: s.name, type:'sector', bd: 'sector:' + s.key,
-        val: (pop || s.eois).toLocaleString(),
-        pct: pop && popTotal
+        val: (popForAll ? pop : s.eois).toLocaleString(),
+        pct: popForAll
           ? ((pop / popTotal) * 100).toFixed(1) + '% of MSMEs'
           : ((s.eois / totalEois) * 100).toFixed(1) + '% of EoIs'
       });
@@ -4481,6 +4498,7 @@
       { name:'CO2 Reduction',    bd:'co2',    val: shortNum(agg.co2),    unit:'ktCO2e', pick: c => c.tco2 },
       { name:'Cost Savings',     bd:'cost',   val: '₹' + shortNum(agg.cost), unit:'Cr', pick: c => c.lakhs },
       { name:'Energy Savings',   bd:'energy', val: shortNum(agg.energy), unit:'MU/yr',  pick: c => c.kwh },
+      { name:'Water Savings',    bd:'water',  val: shortNum(agg.kl),     unit:'kL/yr',  pick: c => c.kl },
       { name:'EoIs Received',    bd:'eois',        val: agg.eois.toLocaleString(),        unit:'EoIs',  pick: c => c.eois },
       { name:'Assessments Done', bd:'assessments', val: agg.assessments.toLocaleString(), unit:'MSMEs', pick: c => c.asmts },
     ].filter(m => clusters.some(c => m.pick(c) > 0));
@@ -4521,6 +4539,7 @@
       ];
       if(agg.cost > 0)   parts.push('₹' + agg.cost.toFixed(2) + ' Cr Cost Savings');
       if(agg.energy > 0) parts.push(agg.energy.toFixed(2) + ' MU/yr Energy');
+      if(agg.kl > 0)     parts.push(agg.kl.toLocaleString('en-IN') + ' kL/yr Water');
       ft.textContent = parts.join(' · ') + ' · Telangana RAMP Greening Programme';
     }
   }
@@ -4545,6 +4564,8 @@
                    unit: () => ({ div:1, sfx:' EoIs' }) },
     assessments: { label:'Assessments Done', color:'#3a7a52', pick: b => b.asmts,
                    unit: () => ({ div:1, sfx:' MSMEs' }) },
+    water:       { label:'Water Saved', color:'#3a7a52', pick: b => b.kl,
+                   unit: peak => peak >= 1000 ? { div:1000, sfx:' ML' } : { div:1, sfx:' kL' } },
     msmesIdentified: { label:'MSMEs Identified', color:'#3a7a52', pick: b => b.msmes || 0,
                    unit: () => ({ div:1, sfx:' MSMEs' }) },
     perMsme:     { label:'tCO₂ per MSME', color:'#3a7a52',
@@ -4557,7 +4578,7 @@
   // one value, unit chosen from its own magnitude
   const fmtOne = (m, v) => fmtUnit(m.unit(v), v);
 
-  const ENTITY_ORDER = ['eois','assessments','co2','energy','cost','perMsme'];
+  const ENTITY_ORDER = ['eois','assessments','co2','energy','water','cost','perMsme'];
 
   let tip = null;
   function tipEl(){
