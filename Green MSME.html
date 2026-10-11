@@ -1348,6 +1348,7 @@
         <span class="eyebrow">05 · Sector Impact</span>
         <h2 class="reveal reveal-d1">Impact across<br/><em>sectors</em></h2>
         <p class="reveal reveal-d2">End-to-end engagement pipeline and verified green outcomes — updated quarterly.</p>
+        <p id="sid-note" style="display:none;font-family:var(--ff-mono);font-size:11px;letter-spacing:.04em;color:var(--terracotta);margin-top:10px"></p>
       </div>
       <div class="sector-ticker-wrap reveal reveal-d3">
         <div class="sector-ticker" id="sectorTabs"></div>
@@ -1362,36 +1363,31 @@
         <div class="sid-col-hd">Engagement Pipeline</div>
         <div class="flist" id="flist">
 
-          <div class="fitem"
-               data-ph="3200" data-it="1800" data-fo="2400">
+          <div class="fitem">
             <div class="fi-l"><span class="fi-n">STEP · 01</span><span class="fi-name">MSME<span class="lc">s</span> Reached Out</span></div>
             <div class="fi-track"><div class="fi-fill" id="fb0"></div></div>
             <div class="fi-val" id="fv0">0</div>
           </div>
 
-          <div class="fitem"
-               data-ph="1400" data-it="640" data-fo="920">
+          <div class="fitem">
             <div class="fi-l"><span class="fi-n">STEP · 02</span><span class="fi-name">EoIs Received</span></div>
             <div class="fi-track"><div class="fi-fill" id="fb1"></div></div>
             <div class="fi-val" id="fv1">0</div>
           </div>
 
-          <div class="fitem"
-               data-ph="450" data-it="210" data-fo="380">
+          <div class="fitem">
             <div class="fi-l"><span class="fi-n">STEP · 03</span><span class="fi-name">Assessments Conducted</span></div>
             <div class="fi-track"><div class="fi-fill" id="fb2"></div></div>
             <div class="fi-val" id="fv2">0</div>
           </div>
 
-          <div class="fitem"
-               data-ph="2200" data-it="520" data-fo="840">
+          <div class="fitem">
             <div class="fi-l"><span class="fi-n">STEP · 04</span><span class="fi-name">Proposals Created</span></div>
             <div class="fi-track"><div class="fi-fill" id="fb3"></div></div>
             <div class="fi-val" id="fv3">0</div>
           </div>
 
-          <div class="fitem"
-               data-ph="700" data-it="180" data-fo="290">
+          <div class="fitem">
             <div class="fi-l"><span class="fi-n">STEP · 05</span><span class="fi-name">Proposals Implemented</span></div>
             <div class="fi-track"><div class="fi-fill" id="fb4"></div></div>
             <div class="fi-val" id="fv4">0</div>
@@ -1406,8 +1402,7 @@
         <div class="sog" id="sog">
 
           <div class="soc"
-               data-ph-v="1.2" data-ph-u="ktCO2e" data-it-v="0.4" data-it-u="ktCO2e" data-fo-v="0.8" data-fo-u="ktCO2e"
-               data-dec="1" data-arc-max="1.2" data-breakdown="co2">
+               data-dec="1" data-breakdown="co2">
             <div class="soc-icon">🌿</div>
             <div class="soc-label">CO₂ Reduced</div>
             <div class="soc-val"><span class="soc-num">0</span><span class="soc-unit"></span></div>
@@ -1415,8 +1410,7 @@
           </div>
 
           <div class="soc"
-               data-ph-v="480" data-ph-u="MU/year" data-it-v="220" data-it-u="MU/year" data-fo-v="340" data-fo-u="MU/year"
-               data-arc-max="480" data-breakdown="energy">
+                data-breakdown="energy">
             <div class="soc-icon">⚡</div>
             <div class="soc-label">Energy Saved</div>
             <div class="soc-val"><span class="soc-num">0</span><span class="soc-unit"></span></div>
@@ -1424,8 +1418,7 @@
           </div>
 
           <div class="soc"
-               data-ph-v="15" data-ph-u="Cr" data-it-v="7" data-it-u="Cr" data-fo-v="15" data-fo-u="Cr"
-               data-prefix="₹" data-arc-max="15" data-breakdown="cost">
+               data-prefix="₹" data-breakdown="cost">
             <div class="soc-icon">💰</div>
             <div class="soc-label">Cost Saved</div>
             <div class="soc-val"><span class="soc-num">0</span><span class="soc-unit"></span></div>
@@ -1433,8 +1426,7 @@
           </div>
 
           <div class="soc"
-               data-ph-v="12" data-ph-u="ML" data-it-v="3" data-it-u="ML" data-fo-v="18" data-fo-u="ML"
-               data-arc-max="18" data-breakdown="perMsme">
+                data-breakdown="perMsme">
             <div class="soc-icon">💧</div>
             <div class="soc-label">Water Saved</div>
             <div class="soc-val"><span class="soc-num">0</span><span class="soc-unit"></span></div>
@@ -2441,27 +2433,21 @@
   (function(){
     const ARC_C = 150.8; // circumference = 2*π*24
 
-    function getRaw(el, sector){
-      return parseFloat(sector === 'pharma' ? el.dataset.ph
-           : sector === 'it'               ? el.dataset.it
-           :                                 el.dataset.fo);
-    }
-    function getOutVal(card, sector){
-      return parseFloat(sector === 'pharma' ? card.dataset.phV
-           : sector === 'it'               ? card.dataset.itV
-           :                                 card.dataset.foV);
-    }
-    function getOutUnit(card, sector){
-      return sector === 'pharma' ? card.dataset.phU
-           : sector === 'it'    ? card.dataset.itU
-           :                      card.dataset.foU;
-    }
+    /* Each element carries the id of the animation that owns it. Starting a
+       new one on the same element retires the old, so a late frame from the
+       previous sector cannot overwrite the current value. */
+    let animSeq = 0;
+    const own = el => { el.dataset.animSeq = String(++animSeq); return el.dataset.animSeq; };
+    const stillOwns = (el, id) => el.dataset.animSeq === id;
 
     function animNum(el, to, dec, prefix, delay){
+      const id = own(el);
       setTimeout(() => {
+        if(!stillOwns(el, id)) return;
         const start = performance.now();
         const dur = 1100;
         function tick(now){
+          if(!stillOwns(el, id)) return;
           const p = Math.min(1, (now - start) / dur);
           const v = to * (1 - Math.pow(1 - p, 3));
           el.textContent = prefix + (dec > 0 ? v.toFixed(dec) : Math.round(v).toLocaleString('en-IN'));
@@ -2472,18 +2458,47 @@
       }, delay);
     }
 
+    /* No live data: show nothing rather than the old placeholder figures.
+       The data-ph/-it/-fo attributes in the markup were illustrative stand-ins
+       (that is where the flat "18 ML" water number came from) and must never
+       be mistaken for programme data. */
+    function clearSector(){
+      document.querySelectorAll('.fitem').forEach((item, i) => {
+        const bar = document.getElementById('fb' + i);
+        const val = document.getElementById('fv' + i);
+        if(bar) bar.style.width = '0%';
+        if(val){ own(val); val.textContent = '—'; }
+      });
+      document.querySelectorAll('.soc').forEach(card => {
+        const numEl  = card.querySelector('.soc-num');
+        const unitEl = card.querySelector('.soc-unit');
+        const arcEl  = card.querySelector('.arc-fg');
+        if(numEl){ own(numEl); numEl.textContent = '—'; }
+        if(unitEl) unitEl.textContent = '';
+        if(arcEl)  arcEl.style.strokeDashoffset = ARC_C;
+      });
+      const note = document.getElementById('sid-note');
+      if(note){
+        note.textContent = 'Live assessment data is unavailable right now, so these figures are hidden.';
+        note.style.display = 'block';
+      }
+    }
+
     function loadSector(sector){
       // Live sector data wins whenever the API returned anything; an unknown
       // key (e.g. the static 'pharma' kickoff) falls back to the first live sector.
       const liveAll = window.MSME_SECTOR_DATA;
       const live    = liveAll ? (liveAll[sector] || liveAll[Object.keys(liveAll)[0]]) : null;
+      if(!live) return clearSector();
+      const note = document.getElementById('sid-note');
+      if(note) note.style.display = 'none';
       const fitems = document.querySelectorAll('.fitem');
-      const maxRaw = live ? Math.max(1, live.funnel[0].val) : getRaw(fitems[0], sector);
+      const maxRaw = Math.max(1, live.funnel[0].val);
 
       // Funnel bars + values
       fitems.forEach((item, i) => {
-        const step = live ? live.funnel[i] : null;
-        const raw  = live ? step.val : getRaw(item, sector);
+        const step = live.funnel[i];
+        const raw  = step.val;
         const pct  = Math.min(100, (raw / maxRaw) * 100);
         const bar  = document.getElementById('fb' + i);
         const valEl = document.getElementById('fv' + i);
@@ -2498,16 +2513,16 @@
 
       // Outcome cards
       document.querySelectorAll('.soc').forEach((card, i) => {
-        const out    = live ? live.outcomes[i] : null;
+        const out    = live.outcomes[i];
         if(out){
           const lblEl = card.querySelector('.soc-label');
           if(lblEl) lblEl.textContent = out.label;
         }
-        const dec    = out ? out.dec : parseInt(card.dataset.dec || '0', 10);
-        const prefix = out ? (out.prefix || '') : (card.dataset.prefix || '');
-        const val    = out ? out.val  : getOutVal(card, sector);
-        const unit   = out ? out.unit : getOutUnit(card, sector);
-        const arcMax = out ? Math.max(out.max, val || 1) : parseFloat(card.dataset.arcMax);
+        const dec    = out.dec;
+        const prefix = out.prefix || '';
+        const val    = out.val;
+        const unit   = out.unit;
+        const arcMax = Math.max(out.max, val || 1);
         const numEl  = card.querySelector('.soc-num');
         const unitEl = card.querySelector('.soc-unit');
         const arcEl  = card.querySelector('.arc-fg');
@@ -3895,7 +3910,10 @@
    aggregate comes back empty/zero.
    ==================================================================== */
 (function(){
-  const ANALYTICS_BASE = 'https://dev-workflow.metaversedu.in/api/v1';
+  /* Production backend. To point elsewhere, set window.MSME_API_BASE in an
+     earlier script tag, e.g. 'https://dev-workflow.metaversedu.in/api/v1'.
+     The host serving this page must be on the API's CORS allowlist. */
+  const ANALYTICS_BASE = window.MSME_API_BASE || 'https://workflow.metaversedu.in/api/v1';
   const ENDPOINT       = ANALYTICS_BASE + '/eoi-analytics';
   const SITE_ENDPOINT  = ANALYTICS_BASE + '/website-data';
   const PAGE_SIZE      = 200;
