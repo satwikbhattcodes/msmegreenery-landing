@@ -1296,7 +1296,7 @@
           <span class="pyramid-annot">LEVEL 01</span>
           <div class="pyramid-block">
             <h5>Outreach</h5>
-            <p>Awareness, onboarding &amp; cluster engagement · 1,000+ MSMEs</p>
+            <p>Awareness, onboarding &amp; cluster engagement · <span class="count" data-api-metric="msmesReached" data-to="1000">0</span>+ MSMEs</p>
           </div>
           <span class="pyramid-annot" style="opacity:0">—</span>
         </div>
@@ -1309,7 +1309,7 @@
             <div class="jstep-title">Outreach</div>
             <div class="jstep-desc">Region-wide awareness, onboarding, and cluster engagement to identify enterprises ready for sustainable upgrades.</div>
           </div>
-          <div class="jstep-metric">1,000+ MSMEs</div>
+          <div class="jstep-metric"><span class="count" data-api-metric="msmesReached" data-to="1000">0</span>+ MSMEs</div>
         </div>
         <div class="jstep">
           <div class="jstep-num">STEP · 02</div>
@@ -1317,7 +1317,7 @@
             <div class="jstep-title">Diagnostics</div>
             <div class="jstep-desc">Energy assessments and resource-efficiency assessments by certified assessors, identifying opportunities at the shop floor.</div>
           </div>
-          <div class="jstep-metric">250+ Assessments</div>
+          <div class="jstep-metric"><span class="count" data-api-metric="assessments" data-to="250">0</span>+ Assessments</div>
         </div>
         <div class="jstep">
           <div class="jstep-num">STEP · 03</div>
@@ -1325,7 +1325,7 @@
             <div class="jstep-title">Implementation</div>
             <div class="jstep-desc">Technology adoption and investment facilitation through the matchmaking platform linking MSMEs with vendors and financiers.</div>
           </div>
-          <div class="jstep-metric">145 DEALS CLOSED</div>
+          <div class="jstep-metric"><span class="count" data-api-metric="dealsClosed" data-to="145">0</span> DEALS CLOSED</div>
         </div>
         <div class="jstep">
           <div class="jstep-num">STEP · 04</div>
@@ -1333,7 +1333,7 @@
             <div class="jstep-title">Impact</div>
             <div class="jstep-desc">Measured cost savings, CO₂ reduction, and verified sustainability outcomes at enterprise and programme level.</div>
           </div>
-          <div class="jstep-metric">3.4 ktCO2e CO₂ Saved</div>
+          <div class="jstep-metric"><span class="count" data-api-metric="co2" data-to="3.4" data-decimals="1">0</span> ktCO2e CO₂ Saved</div>
         </div>
       </div>
     </div>
@@ -2423,6 +2423,7 @@
         pyramid.querySelectorAll('.pyramid-row').forEach((row,i)=>{
           setTimeout(()=>row.classList.add('in'), i*180+200);
         });
+        pyramid.querySelectorAll('.count').forEach(runCounter);
         pyramidObs.unobserve(e.target);
       }
     });
