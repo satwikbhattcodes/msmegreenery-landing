@@ -3015,7 +3015,7 @@
             </div>
             <div class="reg-row full">
               <div class="reg-field" id="f-prog"><label class="reg-label">RAMP Workshop / Program<span>*</span></label>
-                <select class="reg-select" id="r-prog"><option value="">Select a RAMP Program</option><option>RECP Assessment Programme – Hyderabad</option><option>Energy Efficiency Workshop – Warangal</option><option>Green Technology Adoption – Karimnagar</option><option>Cleaner Production Training – Nizamabad</option><option>Resource Efficiency Assessment – Sangareddy</option><option>MSME Green Cluster Initiative – Khammam</option></select>
+                <select class="reg-select" id="r-prog"><option value="">Select a RAMP Program</option></select>
                 <div class="reg-err">Required</div></div>
             </div>
             <div class="reg-row full">
@@ -3307,9 +3307,7 @@
   .prog-card-meta{display:flex;flex-direction:column;gap:6px}
   .prog-meta-row{display:flex;align-items:center;gap:7px;font-size:12px;color:#6a8c6d;font-weight:500}
   .prog-meta-row svg{width:13px;height:13px;stroke:var(--moss);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-  .prog-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:8px;border-top:1px solid var(--line)}
-  .prog-seats{font-size:11px;font-weight:600;color:#9ab09c}
-  .prog-seats span{color:var(--moss)}
+  .prog-card-footer{display:flex;align-items:center;justify-content:flex-end;margin-top:auto;padding-top:8px;border-top:1px solid var(--line)}
   .prog-cta{height:34px;padding:0 16px;border-radius:999px;background:var(--forest);color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;transition:all .2s;font-family:inherit}
   .prog-cta:hover{background:var(--moss);transform:translateY(-1px)}
   .prog-empty{text-align:center;padding:48px 20px;color:#9ab09c;font-size:14px}
@@ -3341,16 +3339,67 @@
 
 <script>
 (function(){
-  const PROGRAMS = [
-    {type:'assessment',badge:'badge-assessment',name:'RECP Assessment Programme',location:'Hyderabad',district:'Hyderabad',date:'15–19 Jun 2026',seats:18,total:24,sector:'Multi-Sector',desc:'Resource-efficient & cleaner production on-site assessments for MSME clusters.'},
-    {type:'workshop',badge:'badge-workshop',name:'Energy Efficiency Workshop',location:'Warangal',district:'Warangal',date:'22–23 Jun 2026',seats:9,total:30,sector:'Textile & Engineering',desc:'Hands-on workshop on energy audits, LED retrofits & motor efficiency upgrades.'},
-    {type:'assessment',badge:'badge-assessment',name:'Resource Efficiency Assessment',location:'Sangareddy',district:'Sangareddy',date:'1–4 Jul 2026',seats:14,total:20,sector:'Pharmaceuticals',desc:'Material flow analysis and water-efficiency diagnostics for pharma MSMEs.'},
-    {type:'training',badge:'badge-training',name:'Green Technology Adoption',location:'Karimnagar',district:'Karimnagar',date:'7–9 Jul 2026',seats:22,total:35,sector:'Ceramics & Fabrication',desc:'Training on solar integration, biomass energy & waste-heat recovery systems.'},
-    {type:'training',badge:'badge-training',name:'Cleaner Production Training',location:'Nizamabad',district:'Nizamabad',date:'14–16 Jul 2026',seats:5,total:25,sector:'Food Processing',desc:'Cleaner production techniques, effluent reduction & certification pathways.'},
-    {type:'cluster',badge:'badge-cluster',name:'MSME Green Cluster Initiative',location:'Khammam',district:'Khammam',date:'21 Jul – 1 Aug 2026',seats:11,total:40,sector:'Auto Components',desc:'Cluster-level greening roadmap covering energy, water, waste & compliance.'},
-    {type:'workshop',badge:'badge-workshop',name:'Solar Solarisation Drive',location:'Nalgonda',district:'Nalgonda',date:'4–5 Aug 2026',seats:28,total:30,sector:'Dairy & Agri',desc:'Subsidised rooftop solar assessment and vendor connect for rural MSMEs.'},
-    {type:'assessment',badge:'badge-assessment',name:'Water Audit & ZLD Readiness',location:'Mahabubnagar',district:'Mahabubnagar',date:'11–13 Aug 2026',seats:16,total:20,sector:'Textile & Garments',desc:'Water footprint audit and zero-liquid-discharge readiness evaluation.'},
-  ];
+  /* Programmes come from website-data.rampProgram (programTitle, programType,
+     description, startDate, endDate, msmeSector, location). Seat counts and
+     district were in the old static list and have no API field, so they are
+     gone rather than invented. */
+  let PROGRAMS = [];
+
+  const BADGE = {
+    assessment:'badge-assessment', workshop:'badge-workshop',
+    training:'badge-training',     cluster:'badge-cluster',
+  };
+
+  function fmtRange(from, to){
+    const a = new Date(from), b = new Date(to);
+    const okA = !Number.isNaN(a.getTime()), okB = !Number.isNaN(b.getTime());
+    if(!okA && !okB) return 'Dates to be announced';
+    const d  = x => x.getDate();
+    const m  = x => x.toLocaleString('en-IN', { month:'short' });
+    const y  = x => x.getFullYear();
+    if(!okB || a.getTime() === b.getTime()) return `${d(a)} ${m(a)} ${y(a)}`;
+    if(y(a) === y(b) && m(a) === m(b))      return `${d(a)}–${d(b)} ${m(a)} ${y(a)}`;
+    if(y(a) === y(b))                        return `${d(a)} ${m(a)} – ${d(b)} ${m(b)} ${y(b)}`;
+    return `${d(a)} ${m(a)} ${y(a)} – ${d(b)} ${m(b)} ${y(b)}`;
+  }
+
+  window.MSME_PROGRAMS = {
+    set: function(list){
+      PROGRAMS = (list || [])
+        .filter(p => p && (p.programTitle || p.programType))
+        .map(p => {
+          const type = String(p.programType || '').toLowerCase();
+          return {
+            type,
+            badge:    BADGE[type] || 'badge-assessment',
+            name:     p.programTitle || 'Untitled programme',
+            desc:     p.description  || '',
+            location: p.location     || '',
+            sector:   p.msmeSector   || '',
+            date:     fmtRange(p.startDate, p.endDate),
+            start:    new Date(p.startDate || 0).getTime() || 0,
+          };
+        })
+        .sort((a, b) => a.start - b.start);
+
+      if(document.getElementById('prog-overlay') &&
+         document.getElementById('prog-overlay').style.display === 'flex') renderGrid(active);
+      fillProgSelect();
+    }
+  };
+
+  // the registration form offers the same programmes
+  function fillProgSelect(){
+    const sel = document.getElementById('r-prog');
+    if(!sel) return;
+    const keep = sel.value;
+    sel.innerHTML = '<option value="">Select a RAMP Program</option>'
+      + PROGRAMS.map(p => {
+          const label = p.location ? `${p.name} – ${p.location}` : p.name;
+          return `<option>${label}</option>`;
+        }).join('');
+    if(keep) sel.value = keep;
+  }
 
   let active = 'all';
 
@@ -3378,21 +3427,25 @@
   function renderGrid(filter){
     const grid = document.getElementById('prog-grid');
     const list = filter === 'all' ? PROGRAMS : PROGRAMS.filter(p=>p.type===filter);
-    if(!list.length){ grid.innerHTML = '<div class="prog-empty">No programmes found for this category.</div>'; return; }
+    if(!list.length){
+      grid.innerHTML = `<div class="prog-empty">${PROGRAMS.length
+        ? 'No programmes found for this category.'
+        : 'No programmes are listed yet. Please check back soon.'}</div>`;
+      return;
+    }
     grid.innerHTML = list.map(p=>`
       <div class="prog-card">
         <div class="prog-card-top">
           <div class="prog-card-name">${p.name}</div>
           <span class="prog-type-badge ${p.badge}">${p.type}</span>
         </div>
-        <div style="font-size:12px;color:#6a8c6d;line-height:1.5;font-weight:500">${p.desc}</div>
+        ${p.desc ? `<div style="font-size:12px;color:#6a8c6d;line-height:1.5;font-weight:500">${p.desc}</div>` : ''}
         <div class="prog-card-meta">
-          <div class="prog-meta-row"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>${p.location}, Telangana</div>
+          ${p.location ? `<div class="prog-meta-row"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>${p.location}</div>` : ''}
           <div class="prog-meta-row"><svg viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>${p.date}</div>
-          <div class="prog-meta-row"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>${p.sector}</div>
+          ${p.sector ? `<div class="prog-meta-row"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>${p.sector}</div>` : ''}
         </div>
         <div class="prog-card-footer">
-          <div class="prog-seats"><span>${p.seats}</span> / ${p.total} seats left</div>
           <button class="prog-cta" onclick="closeProgModal();openRegModal()">Register →</button>
         </div>
       </div>`).join('');
@@ -4173,6 +4226,9 @@
       loanVolume:           n('loanVolumeInLakhs') ? num(site.loanVolumeInLakhs) / 100 : null,  // lakhs -> Cr
     };
     Object.entries(map).forEach(([k, v]) => { if(v !== null) agg[k] = v; });
+
+    agg.programs = Array.isArray(site.rampProgram) ? site.rampProgram : [];
+    if(window.MSME_PROGRAMS) window.MSME_PROGRAMS.set(agg.programs);
 
     agg.msmesByDistrict = new Map(Object.entries(site.msmesIdentifiedByDistrict || {}));
     agg.msmesBySector   = new Map(Object.entries(site.sectorMsmeCount || {}));
