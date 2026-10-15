@@ -521,7 +521,7 @@
   .th-filter:hover{border-color:var(--forest);color:var(--forest)}
   .th-filter.active{background:var(--forest);color:var(--parchment);border-color:var(--forest)}
   .th-label{font-family:var(--ff-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;opacity:.5;margin-bottom:18px}
-  .th-books{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;flex:1;align-items:end;padding-bottom:40px}
+  .th-books{display:grid;grid-template-columns:repeat(6,1fr);gap:20px;flex:1;align-items:end;padding-bottom:40px}
   @media(max-width:1100px){.th-books{grid-template-columns:repeat(3,1fr)}}
   @media(max-width:700px){.th-books{grid-template-columns:repeat(2,1fr)}}
   /* 3D book effect */
@@ -576,6 +576,7 @@
   .th-book-3 .th-book-cover{background:#1a1200}
   .th-book-4 .th-book-cover{background:#081828}
   .th-book-5 .th-book-cover{background:#160820}
+  .th-book-6 .th-book-cover{background:#0e1a14}
 
   /* ===== LIVE BREAKDOWN TOOLTIP ===== */
   [data-breakdown]{cursor:help}
@@ -1604,15 +1605,17 @@
           <div class="th-stat-l">Technologies Listed</div>
         </div>
         <div class="th-stat">
-          <div class="th-stat-n">5</div>
+          <div class="th-stat-n">6</div>
           <div class="th-stat-l">Sectors</div>
         </div>
       </div>
       <div class="th-filters">
-        <button class="th-filter active">Dairy</button>
-        <button class="th-filter">Ceramics</button>
+        <button class="th-filter active">Beverages</button>
+        <button class="th-filter">Cold Storage</button>
+        <button class="th-filter">Forging</button>
         <button class="th-filter">Foundry</button>
         <button class="th-filter">Pharma</button>
+        <button class="th-filter">Textile</button>
       </div>
     </div>
 
@@ -1620,82 +1623,98 @@
 
     <div class="th-books reveal reveal-d3">
 
-      <!-- Book 1: Dairy Sector -->
+      <!-- Book 1: Beverages -->
       <div class="th-book th-book-1">
         <div class="th-book-cover">
-          <img class="th-book-cover-img" src="bookcovers/dairy.png" alt="Dairy Sector Compendium cover"/>
+          <img class="th-book-cover-img" src="compendiums/covers/beverages.jpg" alt="Eco Beverage Industry Compendium cover" loading="lazy"/>
           <div class="th-book-overlay">
-            <div class="th-book-series">RECP · Technology Compendium</div>
-            <div class="th-book-title">Dairy Sector</div>
-            <div class="th-book-foot"><div class="th-book-pages">Sep 2020</div></div>
+            <div class="th-book-series">RAMP Telangana · Technology Compendium</div>
+            <div class="th-book-title">Eco Beverage Industry</div>
+            <div class="th-book-foot"><div class="th-book-pages">Aug 2026</div></div>
           </div>
         </div>
         <div class="th-book-hover">
-          <a class="th-book-dl" href="books/Technology%20Compendium%20-%20Dairy%20Sector%20Sep2020.pdf" download>Download PDF</a>
+          <a class="th-book-dl" href="https://msmegreenary.metaversedu.in/compendiums/Beverages%20Technology%20Compendium.pdf" target="_blank" rel="noopener">Download PDF</a>
           <span class="th-book-preview">First page preview</span>
         </div>
       </div>
 
-      <!-- Book 2: Ceramics Ahmedabad -->
+      <!-- Book 2: Cold Storage -->
       <div class="th-book th-book-2">
         <div class="th-book-cover">
-          <img class="th-book-cover-img" src="bookcovers/ceramic.png" alt="Ceramics Ahmedabad Compendium cover"/>
+          <img class="th-book-cover-img" src="compendiums/covers/cold-storage.jpg" alt="Eco Cold Storages Compendium cover" loading="lazy"/>
           <div class="th-book-overlay">
-            <div class="th-book-series">RECP · Technology Compendium</div>
-            <div class="th-book-title">Ceramics · Ahmedabad Cluster</div>
-            <div class="th-book-foot"><div class="th-book-pages">2020</div></div>
+            <div class="th-book-series">RAMP Telangana · Technology Compendium</div>
+            <div class="th-book-title">Eco Cold Storages</div>
+            <div class="th-book-foot"><div class="th-book-pages">Aug 2026</div></div>
           </div>
         </div>
         <div class="th-book-hover">
-          <a class="th-book-dl" href="books/Technology%20Compendium%20in%20Ceramic%20Ahmedabad%20Cluster.pdf" download>Download PDF</a>
+          <a class="th-book-dl" href="https://msmegreenary.metaversedu.in/compendiums/Cold%20storages%20Technology%20Compendium.pdf" target="_blank" rel="noopener">Download PDF</a>
           <span class="th-book-preview">First page preview</span>
         </div>
       </div>
 
-      <!-- Book 3: Ceramics Thangadh -->
+      <!-- Book 3: Forging -->
       <div class="th-book th-book-3">
         <div class="th-book-cover">
-          <img class="th-book-cover-img" src="bookcovers/thungadh.png" alt="Ceramics Thangadh Compendium cover"/>
+          <img class="th-book-cover-img" src="compendiums/covers/forging.jpg" alt="Eco Forging Compendium cover" loading="lazy"/>
           <div class="th-book-overlay">
-            <div class="th-book-series">RECP · Technology Compendium</div>
-            <div class="th-book-title">Ceramics · Thangadh Cluster</div>
-            <div class="th-book-foot"><div class="th-book-pages">May 2020</div></div>
+            <div class="th-book-series">RAMP Telangana · Technology Compendium</div>
+            <div class="th-book-title">Eco Forging</div>
+            <div class="th-book-foot"><div class="th-book-pages">May 2026</div></div>
           </div>
         </div>
         <div class="th-book-hover">
-          <a class="th-book-dl" href="books/Technology%20Compendium%20in%20Ceramic%20Thangadh%20Cluster%2029May2020.pdf" download>Download PDF</a>
+          <a class="th-book-dl" href="https://msmegreenary.metaversedu.in/compendiums/Forging%20Technology%20Compendium.pdf" target="_blank" rel="noopener">Download PDF</a>
           <span class="th-book-preview">First page preview</span>
         </div>
       </div>
 
-      <!-- Book 4: Foundry & Auto -->
+      <!-- Book 4: Foundry -->
       <div class="th-book th-book-4">
         <div class="th-book-cover">
-          <img class="th-book-cover-img" src="bookcovers/foundryindore.png" alt="Foundry Auto Indore Compendium cover"/>
+          <img class="th-book-cover-img" src="compendiums/covers/foundry.jpg" alt="Eco Metal Foundry Compendium cover" loading="lazy"/>
           <div class="th-book-overlay">
-            <div class="th-book-series">RECP · Technology Compendium</div>
-            <div class="th-book-title">Foundry &amp; Auto · Indore</div>
-            <div class="th-book-foot"><div class="th-book-pages">Sep 2020</div></div>
+            <div class="th-book-series">RAMP Telangana · Technology Compendium</div>
+            <div class="th-book-title">Eco Metal Foundry</div>
+            <div class="th-book-foot"><div class="th-book-pages">Aug 2026</div></div>
           </div>
         </div>
         <div class="th-book-hover">
-          <a class="th-book-dl" href="books/Technology-Compendium-Indore-Foundry-Auto-Cluster%20Sep2020.pdf" download>Download PDF</a>
+          <a class="th-book-dl" href="https://msmegreenary.metaversedu.in/compendiums/Foundry%20Technology%20Compendium.pdf" target="_blank" rel="noopener">Download PDF</a>
           <span class="th-book-preview">First page preview</span>
         </div>
       </div>
 
-      <!-- Book 5: Pharma & Readymade -->
+      <!-- Book 5: Pharma -->
       <div class="th-book th-book-5">
         <div class="th-book-cover">
-          <img class="th-book-cover-img" src="bookcovers/pharmaindore.png" alt="Pharma Readymade Indore Compendium cover"/>
+          <img class="th-book-cover-img" src="compendiums/covers/pharma.jpg" alt="Eco Pharma Compendium cover" loading="lazy"/>
           <div class="th-book-overlay">
-            <div class="th-book-series">RECP · Technology Compendium</div>
-            <div class="th-book-title">Pharma &amp; Readymade · Indore</div>
-            <div class="th-book-foot"><div class="th-book-pages">Sep 2020</div></div>
+            <div class="th-book-series">RAMP Telangana · Technology Compendium</div>
+            <div class="th-book-title">Eco Pharma</div>
+            <div class="th-book-foot"><div class="th-book-pages">May 2026</div></div>
           </div>
         </div>
         <div class="th-book-hover">
-          <a class="th-book-dl" href="books/Technology-Compendium-Indore-Pharma-and-Readymade-Cluster%20Sep2020.pdf" download>Download PDF</a>
+          <a class="th-book-dl" href="https://msmegreenary.metaversedu.in/compendiums/Pharma.%20Technology%20Compendium.pdf" target="_blank" rel="noopener">Download PDF</a>
+          <span class="th-book-preview">First page preview</span>
+        </div>
+      </div>
+
+      <!-- Book 6: Textile -->
+      <div class="th-book th-book-6">
+        <div class="th-book-cover">
+          <img class="th-book-cover-img" src="compendiums/covers/textile.jpg" alt="Eco Weaves · Textiles Compendium cover" loading="lazy"/>
+          <div class="th-book-overlay">
+            <div class="th-book-series">RAMP Telangana · Technology Compendium</div>
+            <div class="th-book-title">Eco Weaves · Textiles</div>
+            <div class="th-book-foot"><div class="th-book-pages">May 2026</div></div>
+          </div>
+        </div>
+        <div class="th-book-hover">
+          <a class="th-book-dl" href="https://msmegreenary.metaversedu.in/compendiums/Textile%20Technology%20Compendium.pdf" target="_blank" rel="noopener">Download PDF</a>
           <span class="th-book-preview">First page preview</span>
         </div>
       </div>
@@ -1719,7 +1738,7 @@
         </div>
       </div>
       <div class="join-right reveal reveal-d2">
-        <a class="join-link" href="#"><span class="n">01</span><span class="t">Technology Compendium</span><span class="a">↗</span></a>
+        <a class="join-link" href="#partners"><span class="n">01</span><span class="t">Technology Compendium</span><span class="a">↗</span></a>
         <a class="join-link" href="#"><span class="n">02</span><span class="t">Financing Pathways</span><span class="a">↗</span></a>
         <a class="join-link" href="#"><span class="n">03</span><span class="t">RECP Assessor Directory</span><span class="a">↗</span></a>
         <a class="join-link" href="#"><span class="n">04</span><span class="t">Publications &amp; Reports</span><span class="a">↗</span></a>
