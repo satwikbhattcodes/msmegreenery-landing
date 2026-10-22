@@ -1121,7 +1121,7 @@
         </div>
       </div>
 
-      <div class="stat-card reveal reveal-d1">
+      <div class="stat-card reveal reveal-d1" data-breakdown="proposals">
         <div class="stat-top">
           <div class="stat-label">09 · Proposals Created</div>
           <div class="stat-value"><span class="count" data-api-metric="proposalsCreated" data-to="240">0</span></div>
@@ -3973,10 +3973,13 @@
      earlier script tag, e.g. 'https://dev-workflow.metaversedu.in/api/v1'.
      The host serving this page must be on the API's CORS allowlist. */
   const ANALYTICS_BASE = window.MSME_API_BASE || 'https://workflow.metaversedu.in/api/v1';
-  const ENDPOINT       = ANALYTICS_BASE + '/eoi-analytics';
+  const ENDPOINT       = ANALYTICS_BASE + '/eoi-analytics/public';
   const SITE_ENDPOINT  = ANALYTICS_BASE + '/website-data';
-  const PAGE_SIZE      = 200;
-  const MAX_PAGES      = 50;          // hard stop, guards a runaway pager
+  // the endpoint costs ~4.5s to answer whatever the page size, so ask for a
+  // big page: the whole dataset arrives in one request until it outgrows this
+  const PAGE_SIZE      = 500;
+  const MAX_PAGES      = 200;         // hard stop, guards a runaway pager
+  const PAGE_FETCH_CONCURRENCY = 6;   // pages after the first are fetched together
   const TIMEOUT_MS     = 12000;
   const MAX_FLOW_SECTORS  = 12;       // flow chart stays readable
   const MAX_FLOW_CLUSTERS = 8;
@@ -4150,23 +4153,39 @@
     } finally { clearTimeout(timer); }
   }
 
+  /* The public endpoint wraps paging in data.page and carries server-side
+     totals alongside the rows; older builds put those fields on data itself. */
+  const pageInfo = d => (d && d.page) ? d.page : (d || {});
+
   async function fetchAll(){
     const first = await getPage(0);
     if(!first) throw new Error('Malformed analytics payload');
-    const rows = Array.isArray(first.content) ? first.content.slice() : [];
-    const totalPages = Math.min(num(first.totalPages) || 1, MAX_PAGES);
-    for(let p = 1; p < totalPages; p++){
-      const pg = await getPage(p);
-      if(!pg || !Array.isArray(pg.content) || !pg.content.length) break;
-      rows.push(...pg.content);
+
+    const info  = pageInfo(first);
+    const rows  = Array.isArray(first.content) ? first.content.slice() : [];
+    const pages = Math.min(num(info.totalPages) || 1, MAX_PAGES);
+
+    // remaining pages run in small parallel batches rather than one at a time
+    for(let start = 1; start < pages; start += PAGE_FETCH_CONCURRENCY){
+      const batch = [];
+      for(let p = start; p < Math.min(start + PAGE_FETCH_CONCURRENCY, pages); p++) batch.push(getPage(p));
+      const settled = await Promise.all(batch.map(pr => pr.catch(() => null)));
+      settled.forEach(pg => {
+        if(pg && Array.isArray(pg.content)) rows.push(...pg.content);
+      });
     }
-    return { rows, totalElements: num(first.totalElements) || rows.length };
+
+    return {
+      rows,
+      totalElements: num(info.totalElements) || rows.length,
+      totals: first.totals || null,
+    };
   }
 
   /* ---------------- group ---------------- */
   function blank(name){
     return { name, eois:0, asmts:0, detailed:0, walkthrough:0, withSavings:0,
-             kwh:0, lakhs:0, tco2:0, kl:0 };
+             kwh:0, lakhs:0, tco2:0, kl:0, proposals:0 };
   }
   function add(bucket, r){
     bucket.eois++;
@@ -4182,6 +4201,7 @@
     bucket.lakhs += num(r.costSavingsInLakhs);
     bucket.tco2  += t;
     bucket.kl    += num(r.waterSavingsInKl);
+    bucket.proposals += num(r.proposalsCreated);
   }
 
   const ym = d => {
@@ -4226,7 +4246,7 @@
       vendorMatches:        n('vendorMatches'),
       financialPartners:    n('financialPartners'),
       dealsClosed:          n('dealsClosed'),
-      proposalsCreated:     n('proposalsCreated'),
+      // proposalsCreated deliberately omitted: it comes from the analytics API
       proposalsImplemented: n('proposalsImplemented'),
       loanVolume:           n('loanVolumeInLakhs') ? num(site.loanVolumeInLakhs) / 100 : null,  // lakhs -> Cr
     };
@@ -4244,7 +4264,7 @@
     return agg;
   }
 
-  function aggregate(rows, totalElements){
+  function aggregate(rows, totalElements, serverTotals){
     const bySector   = new Map();  // key -> bucket (+ .label)
     const byCluster  = new Map();
     const byDistrict = new Map();  // district name -> bucket (+ .clusters, .sectors)
@@ -4345,6 +4365,9 @@
       sectors:     bySector.size,
       clusters:    byCluster.size,
       kwh: totals.kwh, lakhs: totals.lakhs, tco2: totals.tco2, kl: totals.kl,
+      // the API reports this across the whole dataset; the row sum is the fallback
+      proposalsCreated: num(serverTotals && serverTotals.totalProposalsCreated) || totals.proposals,
+      serverTotals: serverTotals || null,
       water: totals.kl / 1000,        // kl -> ML
       co2:    totals.tco2 / 1000,   // tCO2e -> ktCO2e
       energy: totals.kwh  / 1e6,    // kWh   -> MU (million units)
@@ -4500,7 +4523,7 @@
           { label:'Assessments Assigned',   val: s.asmts },
           { label:'Detailed Audits',        val: s.detailed },
           { label:'Walkthrough Assessments',val: s.walkthrough },
-          { label:'Savings Quantified',     val: s.withSavings },
+          { label:'Proposals Created',      val: s.proposals },
         ],
         outcomes: [
           { label:'CO₂ Reduced', val: s.tco2/1000,  unit:'ktCO2e',  dec:dec(s.tco2/1000), max:maxCo2 },
@@ -4644,6 +4667,8 @@
                    unit: () => ({ div:1, sfx:' EoIs' }) },
     assessments: { label:'Assessments Done', color:'#3a7a52', pick: b => b.asmts,
                    unit: () => ({ div:1, sfx:' MSMEs' }) },
+    proposals:   { label:'Proposals Created', color:'#3a7a52', pick: b => b.proposals,
+                   unit: () => ({ div:1, sfx:' proposals' }) },
     water:       { label:'Water Saved', color:'#3a7a52', pick: b => b.kl,
                    unit: peak => peak >= 1000 ? { div:1000, sfx:' ML' } : { div:1, sfx:' kL' } },
     msmesIdentified: { label:'MSMEs Identified', color:'#3a7a52', pick: b => b.msmes || 0,
@@ -4658,7 +4683,7 @@
   // one value, unit chosen from its own magnitude
   const fmtOne = (m, v) => fmtUnit(m.unit(v), v);
 
-  const ENTITY_ORDER = ['eois','assessments','co2','energy','water','cost','perMsme'];
+  const ENTITY_ORDER = ['eois','assessments','proposals','co2','energy','water','cost','perMsme'];
 
   let tip = null;
   function tipEl(){
@@ -4829,8 +4854,8 @@
       return null;
     }
 
-    const base = eoiOk ? aggregate(eoiRes.value.rows, eoiRes.value.totalElements)
-                       : aggregate([], 0);
+    const base = eoiOk ? aggregate(eoiRes.value.rows, eoiRes.value.totalElements, eoiRes.value.totals)
+                       : aggregate([], 0, null);
     const agg  = applySiteData(base, siteOk ? siteRes.value : null);
     agg.sources = { eoiAnalytics: eoiOk, websiteData: !!siteOk };
 
