@@ -1646,7 +1646,7 @@
       <label>Headline Metrics (edit values)</label>
       <div class="tweak-num"><input id="tk-msmes" type="number" step="100" value="1000"/><label>MSMEs</label></div>
       <div class="tweak-num"><input id="tk-co2" type="number" step="0.1" value="3.4"/><label>Mt CO₂</label></div>
-      <div class="tweak-num"><input id="tk-mwh" type="number" step="0.1" value="2.5"/><label>MU/year</label></div>
+      <div class="tweak-num"><input id="tk-mwh" type="number" step="1" value="1550"/><label>TOE/year</label></div>
       <p class="tweak-hint">Changes re-animate the headline counters.</p>
     </div>
 
@@ -1663,7 +1663,7 @@
     "mega": false,
     "msmes": 1000,
     "co2": 3.4,
-    "mwh": 2.5
+    "mwh": 1550
   }/*EDITMODE-END*/;
 
   const TWEAKS = Object.assign({}, TWEAK_DEFAULTS);
@@ -1676,10 +1676,12 @@
     stats.classList.toggle('glow', !!TWEAKS.glow);
     stats.classList.toggle('pulse', !!TWEAKS.pulse);
     document.querySelector('.impact-grid').classList.toggle('mega', !!TWEAKS.mega);
-    // update data-to values
-    document.querySelector('[data-key="msmes"]').dataset.to = TWEAKS.msmes;
-    document.querySelector('[data-key="co2"]').dataset.to = TWEAKS.co2;
-    document.querySelector('[data-key="mwh"]').dataset.to = TWEAKS.mwh;
+    // seed the static fallback only: once live data lands it owns these
+    if(!(window.MSMEAnalytics && window.MSMEAnalytics.data)){
+      document.querySelector('[data-key="msmes"]').dataset.to = TWEAKS.msmes;
+      document.querySelector('[data-key="co2"]').dataset.to   = TWEAKS.co2;
+      document.querySelector('[data-key="mwh"]').dataset.to   = TWEAKS.mwh;
+    }
     // reflect in UI controls
     document.querySelectorAll('.tweak-options').forEach(g=>{
       const key = g.dataset.group;
@@ -3702,7 +3704,8 @@
   const PAGE_SIZE      = 500;
   const MAX_PAGES      = 200;         // hard stop, guards a runaway pager
   const PAGE_FETCH_CONCURRENCY = 6;   // pages after the first are fetched together
-  const TIMEOUT_MS     = 12000;
+  // the public analytics endpoint currently answers in 15-20s per page
+  const TIMEOUT_MS     = 45000;
   const MAX_FLOW_SECTORS  = 12;       // flow chart stays readable
   const MAX_FLOW_CLUSTERS = 8;
 
