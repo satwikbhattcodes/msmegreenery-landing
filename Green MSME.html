@@ -229,7 +229,7 @@
   /* ============ IMPACT ============ */
   #impact{background:var(--parchment)}
   .impact-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:48px;flex-wrap:wrap}
-  .impact-head h2{font-family:var(--ff-serif);font-size:clamp(44px,6vw,96px);line-height:.95;letter-spacing:-.02em;max-width:10ch}
+  .impact-head h2{font-family:var(--ff-serif);font-size:clamp(28px,3.5vw,54px);line-height:1;letter-spacing:-.025em}
   .impact-head h2 em{font-style:italic;color:var(--terracotta)}
   .impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line-strong);border-left:1px solid var(--line-strong)}
   @media (max-width:960px){.impact-grid{grid-template-columns:repeat(2,1fr)}}
@@ -252,7 +252,7 @@
   /* ============ DISTRICTS (replaces broken sectors) ============ */
   #districts{background:var(--parchment-2);color:var(--ink)}
   .districts-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:24px}
-  .districts-head h2{font-family:var(--ff-serif);font-size:clamp(44px,6vw,96px);line-height:.95;letter-spacing:-.02em;max-width:14ch}
+  .districts-head h2{font-family:var(--ff-serif);font-size:clamp(28px,3.5vw,54px);line-height:1;letter-spacing:-.025em}
   .districts-head h2 em{font-style:italic;color:var(--moss)}
   .districts-head .desc{max-width:380px;font-size:14px;opacity:.72;line-height:1.6}
 
@@ -411,10 +411,12 @@
 
   /* ============ ECOSYSTEM ============ */
   #ecosystem{background:var(--parchment);color:var(--ink)}
-  .eco-head{text-align:center;max-width:720px;margin:0 auto 48px}
-  .eco-head h2{font-family:var(--ff-serif);font-size:clamp(44px,6vw,84px);line-height:1;letter-spacing:-.02em;margin:14px 0 18px}
+  .eco-head{text-align:left;max-width:720px;margin:0 0 48px}
+  .eco-head h2{font-family:var(--ff-serif);font-size:clamp(28px,3.5vw,54px);line-height:1;letter-spacing:-.025em;margin:14px 0 18px}
   .eco-head h2 em{font-style:italic;color:var(--moss)}
   .eco-head p{font-size:16px;color:rgba(14,26,20,.7);line-height:1.6}
+  .eco-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+  .eco-cta .btn-primary,.eco-cta .btn-ghost{font-family:inherit;cursor:pointer}
   .eco-card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:36px 40px;margin-bottom:28px}
   .eco-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;margin-bottom:24px}
   .eco-card-title{display:flex;gap:18px;align-items:flex-start}
@@ -600,6 +602,40 @@
   .bd-row-fill{height:100%;border-radius:2px;transition:width .3s ease}
   .bd-tip-empty{font-family:var(--ff-mono);font-size:9px;color:rgba(14,26,20,.45);line-height:1.5}
 
+
+
+  /* ===== RAMP value proposition (flyer content) ===== */
+  .ramp-offer{display:flex;flex-direction:column;gap:26px}
+  .ramp-offer-hd{font-family:var(--ff-mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--moss);margin-bottom:12px}
+  .ramp-offer-hd b{color:var(--terracotta)}
+  .ramp-chips{display:flex;flex-wrap:wrap;gap:8px}
+  .ramp-chip{font-size:12.5px;font-weight:600;color:var(--ink);background:var(--parchment-2);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+  .ramp-list{list-style:none;counter-reset:ro;display:grid;gap:9px}
+  .ramp-list li{counter-increment:ro;position:relative;padding-left:30px;font-size:14px;line-height:1.55;color:rgba(14,26,20,.82)}
+  .ramp-list li::before{content:counter(ro);position:absolute;left:0;top:1px;width:20px;height:20px;border-radius:50%;background:var(--forest);color:var(--parchment);font-family:var(--ff-mono);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .ramp-gains{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+  .ramp-gain{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px 16px}
+  .ramp-gain-k{font-family:var(--ff-serif);font-size:16px;font-weight:600;margin-bottom:5px;letter-spacing:-.01em}
+  .ramp-gain p{font-size:12.5px;line-height:1.55;color:rgba(14,26,20,.68)}
+  .ramp-offer-cta{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .ramp-contact{display:flex;flex-direction:column;gap:2px;font-family:var(--ff-mono);font-size:11px}
+  .ramp-contact a{color:var(--moss);text-decoration:none}
+  .ramp-contact a:hover{text-decoration:underline}
+
+  /* ===== TEAM ===== */
+  #team{background:var(--parchment);color:var(--ink)}
+  .team-head{max-width:720px;margin:0 0 44px}
+  .team-head h2{font-family:var(--ff-serif);font-size:clamp(28px,3.5vw,54px);line-height:1;letter-spacing:-.025em;margin:14px 0 18px}
+  .team-head h2 em{font-style:italic;color:var(--moss)}
+  .team-head p{font-size:16px;color:rgba(14,26,20,.7);line-height:1.6}
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+  .team-card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+  .team-card-logo{height:46px;display:flex;align-items:center}
+  .team-card-logo img{max-height:46px;max-width:168px;object-fit:contain}
+  .team-card-role{font-family:var(--ff-mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--moss)}
+  .team-card h3{font-family:var(--ff-serif);font-size:21px;font-weight:600;letter-spacing:-.01em;line-height:1.2}
+  .team-card p{font-size:13.5px;color:rgba(14,26,20,.72);line-height:1.6}
+
   /* ===== SECTOR IMPACT DASHBOARD ===== */
   #emissions{background:var(--parchment-2);color:var(--ink)}
   .sid-top{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:32px;flex-wrap:wrap}
@@ -667,6 +703,17 @@
   #flow-pathway{background:var(--paper);overflow:visible}
   .fp-hd{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:10px}
   .fp-hd-l h2{font-family:var(--ff-serif);font-size:clamp(28px,3.5vw,54px);line-height:1;letter-spacing:-.025em;margin:6px 0 8px}
+  .fp-filter{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 14px;padding:11px 14px;
+    background:rgba(58,122,82,.06);border:1px solid rgba(58,122,82,.2);border-radius:6px}
+  .fp-filter-sel{font-family:var(--ff-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--forest)}
+  .fp-filter-sel b{font-weight:700}
+  .fp-filter-figs{display:flex;gap:16px;flex-wrap:wrap;margin-left:auto}
+  .fp-filter-fig{font-family:var(--ff-mono);font-size:10px;color:rgba(14,26,20,.62);letter-spacing:.04em}
+  .fp-filter-fig b{font-family:var(--ff-serif);font-size:15px;color:var(--ink);letter-spacing:-.01em;margin-right:3px}
+  .fp-filter-clear{font-family:var(--ff-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+    background:none;border:1px solid rgba(58,122,82,.35);color:var(--forest);border-radius:999px;
+    padding:5px 11px;cursor:pointer;transition:background .2s}
+  .fp-filter-clear:hover{background:rgba(58,122,82,.12)}
   .fp-hd-l h2 em{color:var(--moss)}
   .fp-hd-l p{font-size:12px;line-height:1.6;color:rgba(14,26,20,.62);max-width:500px}
   .fp-sum{display:flex;gap:10px;flex-shrink:0;margin-top:4px}
@@ -742,16 +789,16 @@
     <a href="#mission" data-i18n="nav.about">About</a>
     <a href="#ramp" data-i18n="nav.ramp">RAMP</a>
     <a href="#impact" data-i18n="nav.impact">Impact</a>
-    <a href="#districts" data-i18n="nav.reach">Reach</a>
-    <a href="#matchmaking" data-i18n="nav.mm">Matchmaking</a>
-    <a href="#ecosystem" data-i18n="nav.eco">Ecosystem</a>
+    <a href="#districts" data-i18n="nav.reach">Districts</a>
+    <a href="#ecosystem" data-i18n="nav.workshops">Workshops</a>
+    <a href="#team" data-i18n="nav.team">Team</a>
   </nav>
   <div class="lang-sw" id="lang-sw" style="display:none">
     <button class="lang-btn active" data-lang="en">EN</button>
     <button class="lang-btn" data-lang="hi">हि</button>
     <button class="lang-btn" data-lang="te">తె</button>
   </div>
-  <a href="https://cii.metaversedu.in/login" target="_blank" rel="noopener" class="cta-pill" data-i18n="nav.login">Portal Login →</a>
+  <a href="https://cii.metaversedu.in/login" target="_blank" rel="noopener" class="cta-pill" data-i18n="nav.login">Assessment Portal →</a>
 </header>
 
 <!-- rail removed -->
@@ -760,10 +807,8 @@
   <button data-target="mission" data-label="Mission"></button>
   <button data-target="impact" data-label="Impact"></button>
   <button data-target="districts" data-label="Districts"></button>
-  <button data-target="journey" data-label="Approach"></button>
-  <button data-target="emissions" data-label="Emissions"></button>
-  <button data-target="matchmaking" data-label="Matchmaking"></button>
-  <button data-target="ecosystem" data-label="Ecosystem"></button>
+  <button data-target="ecosystem" data-label="Workshops"></button>
+  <button data-target="team" data-label="Team"></button>
   <button data-target="join" data-label="Join"></button>
 </div>
 
@@ -817,7 +862,7 @@
           </div>
           <div class="hero-stat">
             <span class="k">Energy</span>
-            <span class="n"><span class="count" data-api-metric="energy" data-to="2.5" data-decimals="1" data-key="mwh">0</span><span class="u">MU/year</span></span>
+            <span class="n"><span class="count" data-api-metric="toe" data-to="1550" data-key="mwh">0</span><span class="u">TOE/year</span></span>
             <span class="l">Energy Saved</span>
             <span class="d">Annualised savings identified.</span>
           </div>
@@ -895,50 +940,49 @@
           Visit Telangana RAMP Portal
         </a>
       </div>
-      <!-- Right column — 5 components -->
-      <div class="ramp-components reveal reveal-d1">
-        <div class="ramp-comp">
-          <div class="ramp-comp-num">01</div>
-          <div class="ramp-comp-body">
-            <div class="ramp-comp-title">Centre–State Linkages</div>
-            <div class="ramp-comp-desc">Strengthening policy coordination between the central government and state MSME bodies for faster implementation.</div>
+      <!-- Right column — what the programme offers an MSME (RAMP flyer) -->
+      <div class="ramp-offer reveal reveal-d1">
+        <div class="ramp-offer-block">
+          <div class="ramp-offer-hd">Are you facing these challenges?</div>
+          <div class="ramp-chips">
+            <span class="ramp-chip">Rising electricity cost</span>
+            <span class="ramp-chip">Process efficiency</span>
+            <span class="ramp-chip">Waste water management</span>
+            <span class="ramp-chip">CO₂ emissions</span>
+            <span class="ramp-chip">Solid waste management</span>
+            <span class="ramp-chip">Clean technology options</span>
           </div>
-          <span class="ramp-comp-tag">Component</span>
         </div>
-        <div class="ramp-comp">
-          <div class="ramp-comp-num">02</div>
-          <div class="ramp-comp-body">
-            <div class="ramp-comp-title">Access to Finance</div>
-            <div class="ramp-comp-desc">Improving credit access for MSMEs through collateral-free lending, digital credit scoring, and green finance instruments.</div>
-          </div>
-          <span class="ramp-comp-tag">Component</span>
+
+        <div class="ramp-offer-block">
+          <div class="ramp-offer-hd">Support services worth <b>₹10 lakh</b>, free of cost</div>
+          <ol class="ramp-list">
+            <li><b>Detailed project reports</b> prepared by RECP experts</li>
+            <li><b>Access to government schemes</b> and subsidies</li>
+            <li><b>Assistance with loans</b> and financial institutions</li>
+            <li><b>Recognition as a Clean MSME</b></li>
+          </ol>
         </div>
-        <div class="ramp-comp">
-          <div class="ramp-comp-num">03</div>
-          <div class="ramp-comp-body">
-            <div class="ramp-comp-title">Market Access &amp; Exports</div>
-            <div class="ramp-comp-desc">Connecting MSMEs to domestic and international markets through e-commerce platforms and export facilitation.</div>
+
+        <div class="ramp-offer-block">
+          <div class="ramp-offer-hd">What your enterprise gains</div>
+          <div class="ramp-gains">
+            <div class="ramp-gain"><div class="ramp-gain-k">Operational efficiency</div><p>Lower specific energy and water consumption on the shop floor.</p></div>
+            <div class="ramp-gain"><div class="ramp-gain-k">Cost reduction</div><p>Minimum 10% saving on operational cost through implemented measures.</p></div>
+            <div class="ramp-gain"><div class="ramp-gain-k">Regulatory compliance</div><p>Readiness for emissions, effluent and waste norms.</p></div>
           </div>
-          <span class="ramp-comp-tag">Component</span>
         </div>
-        <div class="ramp-comp active">
-          <div class="ramp-comp-num">04</div>
-          <div class="ramp-comp-body">
-            <div class="ramp-comp-title">Greening MSMEs &amp; Technology</div>
-            <div class="ramp-comp-desc">Driving adoption of clean technologies, resource efficiency, and low-carbon practices across MSME clusters — this is the active initiative.</div>
+
+        <div class="ramp-offer-cta">
+          <a href="https://tg.ramp.metaversedu.in/" target="_blank" rel="noopener" class="btn-primary">Request a Free Energy Assessment <span>→</span></a>
+          <div class="ramp-contact">
+            <a href="mailto:ramp.telangana@cii.in">ramp.telangana@cii.in</a>
+            <a href="tel:+919989992902">+91 99899 92902</a>
           </div>
-          <span class="ramp-comp-tag">This Initiative</span>
-        </div>
-        <div class="ramp-comp">
-          <div class="ramp-comp-num">05</div>
-          <div class="ramp-comp-body">
-            <div class="ramp-comp-title">Skills &amp; Handholding</div>
-            <div class="ramp-comp-desc">Upskilling MSME workforce through targeted training, mentorship, and enterprise development services.</div>
-          </div>
-          <span class="ramp-comp-tag">Component</span>
         </div>
       </div>
     </div>
+
     <!-- Implementing agencies logo strip -->
     <div class="ramp-agencies reveal">
       <div class="ramp-ag-label">Implementing Agencies</div>
@@ -973,8 +1017,8 @@
     <div class="fp-hd">
       <div class="fp-hd-l">
         <span class="eyebrow reveal" data-i18n="ramp.eyebrow">About · RAMP Programme</span>
-        <h2 class="reveal reveal-d1">Energy &amp; Resource<br/><em>Flow Pathway</em></h2>
-        <p class="reveal reveal-d2">Hover any node to trace its complete upstream &amp; downstream connections — from industrial sector through district cluster to environmental impact.</p>
+        <h2 class="reveal reveal-d1">Impact across <em>sectors and clusters</em></h2>
+        <p class="reveal reveal-d2">Energy &amp; resource flow pathway across sectors and clusters — click a sector or a cluster to see what it contributes, and hover any node to trace its upstream and downstream connections.</p>
       </div>
       <div class="fp-sum reveal reveal-d2">
         <div class="fp-sum-item"><div class="fp-sum-n" id="fp-sum-sectors">15</div><div class="fp-sum-l">Sectors</div></div>
@@ -995,6 +1039,7 @@
         <span>Line weight = flow volume</span>
       </div>
     </div>
+    <div class="fp-filter" id="fp-filter" hidden></div>
     <div class="fp-canvas" id="fp-canvas"></div>
     <p class="fp-ft" id="fp-ft">35,102 MSMEs Identified · 680 EoIs · 265 Assessments · ₹3.62 Cr Savings · Telangana RAMP Greening Programme</p>
   </section>
@@ -1004,7 +1049,7 @@
     <div class="impact-head">
       <div>
         <span class="eyebrow reveal">02 · Impact Dashboard</span>
-        <h2 class="reveal reveal-d1">The <em>numbers</em><br/>so far</h2>
+        <h2 class="reveal reveal-d1">The <em>numbers</em> so far</h2>
       </div>
     </div>
 
@@ -1096,11 +1141,11 @@
       <div class="stat-card reveal reveal-d3">
         <div class="stat-top">
           <div class="stat-label">07 · Energy Saved</div>
-          <div class="stat-value"><span class="count" data-api-metric="energy" data-to="2.5" data-decimals="1">0</span><span class="unit">MU/year</span></div>
+          <div class="stat-value"><span class="count" data-api-metric="toe" data-to="1550">0</span><span class="unit">TOE/year</span></div>
         </div>
         <div class="stat-bottom">
           <div class="stat-desc">Annualised savings identified.</div>
-          <svg class="stat-sparkline" data-api-spark="energy" width="80" height="40" viewBox="0 0 80 40" fill="none">
+          <svg class="stat-sparkline" data-api-spark="toe" width="80" height="40" viewBox="0 0 80 40" fill="none">
             <path d="M0 30 L16 24 L32 20 L48 18 L64 12 L80 6" stroke="rgba(14,26,20,.15)" stroke-width="1.5"/>
             <path class="draw" style="--len:200" d="M0 30 L16 24 L32 20 L48 18 L64 12 L80 6" stroke="var(--forest)" stroke-width="1.5"/>
           </svg>
@@ -1176,7 +1221,7 @@
     <div class="districts-head">
       <div>
         <span class="eyebrow reveal" data-i18n="districts.ey">03 · District Coverage</span>
-        <h2 class="reveal reveal-d1" data-i18n="districts.h2">Where <em>change</em><br/>is taking root</h2>
+        <h2 class="reveal reveal-d1" data-i18n="districts.h2">Where <em>change</em> is taking root</h2>
       </div>
       <p class="desc reveal reveal-d2">
         Mapping resource-intensive manufacturing hubs prioritised for energy efficiency interventions across Telangana's industrial clusters.
@@ -1248,266 +1293,24 @@
   </section>
 
   <!-- ============ JOURNEY / PYRAMID ============ -->
-  <section id="journey">
-    <div class="journey-head">
-      <span class="eyebrow reveal">04 · Strategy Model</span>
-      <h2 class="reveal reveal-d1">The <em>Pyramid</em> approach</h2>
-      <p class="reveal reveal-d2">
-        A four-level strategic framework that converts broad outreach into
-        measurable impact — every MSME moves from awareness to verified outcomes
-        through structured phases.
-      </p>
-    </div>
-
-    <div class="journey-layout">
-      <div class="pyramid" id="pyramid">
-        <div class="pyramid-title reveal">PYRAMID APPROACH · STRATEGY MODEL</div>
-
-        <div class="pyramid-row lvl-1">
-          <span class="pyramid-annot">LEVEL 04</span>
-          <div class="pyramid-block">
-            <h5>Impact</h5>
-            <p>Cost savings, CO₂ reduction, sustainability outcomes</p>
-          </div>
-          <span class="pyramid-annot" style="opacity:0">—</span>
-        </div>
-        <div class="pyramid-row lvl-2">
-          <span class="pyramid-annot">LEVEL 03</span>
-          <div class="pyramid-block">
-            <h5>Implementation</h5>
-            <p>Technology adoption &amp; investment facilitation</p>
-          </div>
-          <span class="pyramid-annot" style="opacity:0">—</span>
-        </div>
-        <div class="pyramid-row lvl-3">
-          <span class="pyramid-annot">LEVEL 02</span>
-          <div class="pyramid-block">
-            <h5>Diagnostics</h5>
-            <p>Energy assessments &amp; opportunity identification</p>
-          </div>
-          <span class="pyramid-annot" style="opacity:0">—</span>
-        </div>
-        <div class="pyramid-row lvl-4">
-          <span class="pyramid-annot">LEVEL 01</span>
-          <div class="pyramid-block">
-            <h5>Outreach</h5>
-            <p>Awareness, onboarding &amp; cluster engagement · <span class="count" data-api-metric="msmesReached" data-to="1000">0</span>+ MSMEs</p>
-          </div>
-          <span class="pyramid-annot" style="opacity:0">—</span>
-        </div>
-      </div>
-
-      <div class="journey-steps reveal reveal-d2">
-        <div class="jstep">
-          <div class="jstep-num">STEP · 01</div>
-          <div>
-            <div class="jstep-title">Outreach</div>
-            <div class="jstep-desc">Region-wide awareness, onboarding, and cluster engagement to identify enterprises ready for sustainable upgrades.</div>
-          </div>
-          <div class="jstep-metric"><span class="count" data-api-metric="msmesReached" data-to="1000">0</span>+ MSMEs</div>
-        </div>
-        <div class="jstep">
-          <div class="jstep-num">STEP · 02</div>
-          <div>
-            <div class="jstep-title">Diagnostics</div>
-            <div class="jstep-desc">Energy assessments and resource-efficiency assessments by certified assessors, identifying opportunities at the shop floor.</div>
-          </div>
-          <div class="jstep-metric"><span class="count" data-api-metric="assessments" data-to="250">0</span>+ Assessments</div>
-        </div>
-        <div class="jstep">
-          <div class="jstep-num">STEP · 03</div>
-          <div>
-            <div class="jstep-title">Implementation</div>
-            <div class="jstep-desc">Technology adoption and investment facilitation through the matchmaking platform linking MSMEs with vendors and financiers.</div>
-          </div>
-          <div class="jstep-metric"><span class="count" data-api-metric="dealsClosed" data-to="145">0</span> DEALS CLOSED</div>
-        </div>
-        <div class="jstep">
-          <div class="jstep-num">STEP · 04</div>
-          <div>
-            <div class="jstep-title">Impact</div>
-            <div class="jstep-desc">Measured cost savings, CO₂ reduction, and verified sustainability outcomes at enterprise and programme level.</div>
-          </div>
-          <div class="jstep-metric"><span class="count" data-api-metric="co2" data-to="3.4" data-decimals="1">0</span> ktCO2e CO₂ Saved</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ============ SECTOR IMPACT DASHBOARD ============ -->
-  <section id="emissions">
-
-    <!-- Header + tabs -->
-    <div class="sid-top">
-      <div class="sid-copy reveal">
-        <span class="eyebrow">05 · Sector Impact</span>
-        <h2 class="reveal reveal-d1">Impact across<br/><em>sectors</em></h2>
-        <p class="reveal reveal-d2">End-to-end engagement pipeline and verified green outcomes — updated quarterly.</p>
-      </div>
-      <div class="sector-ticker-wrap reveal reveal-d3">
-        <div class="sector-ticker" id="sectorTabs"></div>
-      </div>
-    </div>
-
-    <!-- Body grid -->
-    <div class="sid-grid">
-
-      <!-- Funnel pipeline -->
-      <div class="sid-pipe reveal reveal-d2">
-        <div class="sid-col-hd">Engagement Pipeline</div>
-        <div class="flist" id="flist">
-
-          <div class="fitem">
-            <div class="fi-l"><span class="fi-n">STEP · 01</span><span class="fi-name">MSME<span class="lc">s</span> Reached Out</span></div>
-            <div class="fi-track"><div class="fi-fill" id="fb0"></div></div>
-            <div class="fi-val" id="fv0">0</div>
-          </div>
-
-          <div class="fitem">
-            <div class="fi-l"><span class="fi-n">STEP · 02</span><span class="fi-name">EoIs Received</span></div>
-            <div class="fi-track"><div class="fi-fill" id="fb1"></div></div>
-            <div class="fi-val" id="fv1">0</div>
-          </div>
-
-          <div class="fitem">
-            <div class="fi-l"><span class="fi-n">STEP · 03</span><span class="fi-name">Assessments Conducted</span></div>
-            <div class="fi-track"><div class="fi-fill" id="fb2"></div></div>
-            <div class="fi-val" id="fv2">0</div>
-          </div>
-
-          <div class="fitem">
-            <div class="fi-l"><span class="fi-n">STEP · 04</span><span class="fi-name">Proposals Created</span></div>
-            <div class="fi-track"><div class="fi-fill" id="fb3"></div></div>
-            <div class="fi-val" id="fv3">0</div>
-          </div>
-
-          <div class="fitem">
-            <div class="fi-l"><span class="fi-n">STEP · 05</span><span class="fi-name">Proposals Implemented</span></div>
-            <div class="fi-track"><div class="fi-fill" id="fb4"></div></div>
-            <div class="fi-val" id="fv4">0</div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Outcome KPI cards -->
-      <div class="sid-outs reveal reveal-d3">
-        <div class="sid-col-hd">Green Outcomes</div>
-        <div class="sog" id="sog">
-
-          <div class="soc"
-               data-dec="1" data-breakdown="co2">
-            <div class="soc-icon">🌿</div>
-            <div class="soc-label">CO₂ Reduced</div>
-            <div class="soc-val"><span class="soc-num">0</span><span class="soc-unit"></span></div>
-            <svg class="soc-arc" viewBox="0 0 60 60"><circle class="arc-bg" cx="30" cy="30" r="24"/><circle class="arc-fg" id="arc0" cx="30" cy="30" r="24"/></svg>
-          </div>
-
-          <div class="soc"
-                data-breakdown="energy">
-            <div class="soc-icon">⚡</div>
-            <div class="soc-label">Energy Saved</div>
-            <div class="soc-val"><span class="soc-num">0</span><span class="soc-unit"></span></div>
-            <svg class="soc-arc" viewBox="0 0 60 60"><circle class="arc-bg" cx="30" cy="30" r="24"/><circle class="arc-fg" id="arc1" cx="30" cy="30" r="24"/></svg>
-          </div>
-
-          <div class="soc"
-               data-prefix="₹" data-breakdown="cost">
-            <div class="soc-icon">💰</div>
-            <div class="soc-label">Cost Saved</div>
-            <div class="soc-val"><span class="soc-num">0</span><span class="soc-unit"></span></div>
-            <svg class="soc-arc" viewBox="0 0 60 60"><circle class="arc-bg" cx="30" cy="30" r="24"/><circle class="arc-fg" id="arc2" cx="30" cy="30" r="24"/></svg>
-          </div>
-
-          <div class="soc"
-                data-breakdown="perMsme">
-            <div class="soc-icon">💧</div>
-            <div class="soc-label">Water Saved</div>
-            <div class="soc-val"><span class="soc-num">0</span><span class="soc-unit"></span></div>
-            <svg class="soc-arc" viewBox="0 0 60 60"><circle class="arc-bg" cx="30" cy="30" r="24"/><circle class="arc-fg" id="arc3" cx="30" cy="30" r="24"/></svg>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
 
   <!-- ============ MATCHMAKING ============ -->
-  <section id="matchmaking">
-    <div class="mm-head">
-      <span class="eyebrow reveal">06 · Matchmaking Platform</span>
-      <h2 class="reveal reveal-d1">Bridging MSMEs with <em>technology</em> &amp; <em>finance</em></h2>
-      <p class="reveal reveal-d2">
-        A structured marketplace connecting enterprises with verified green-technology
-        vendors and financial institutions — from registration through to closed deal.
-      </p>
-    </div>
-
-    <div class="mm-stats">
-      <div class="mm-stat reveal reveal-d1">
-        <div class="k">Vendor Matches</div>
-        <div class="v"><span class="count" data-api-metric="vendorMatches" data-to="310">0</span></div>
-        <div class="d">MSMEs matched with technology providers.</div>
-      </div>
-
-      <div class="mm-stat reveal reveal-d2">
-        <div class="k">Financial Partners</div>
-        <div class="v"><span class="count" data-api-metric="financialPartners" data-to="25">0</span></div>
-        <div class="d">Financial institutions engaged in the platform.</div>
-      </div>
-      <div class="mm-stat reveal reveal-d3">
-        <div class="k">Deals Closed</div>
-        <div class="v"><span class="count" data-api-metric="dealsClosed" data-to="145">0</span></div>
-        <div class="d">Successful investment deals executed.</div>
-      </div>
-      <div class="mm-stat reveal reveal-d4">
-        <div class="k">Loan Volume</div>
-        <div class="v">₹<span class="count" data-api-metric="loanVolume" data-to="100">0</span><span style="font-size:36px;font-weight:600;opacity:1"> Cr</span></div>
-        <div class="d">Loan applications facilitated through the platform.</div>
-      </div>
-    </div>
-
-    <div class="mm-flow reveal reveal-d2">
-      <div class="mm-flow-title">HOW IT WORKS · FOUR-STEP FLOW</div>
-      <div class="mm-flow-steps">
-        <div class="mm-flow-step">
-          <div class="num">STEP · 01</div>
-          <div class="lbl">MSME Registers Need</div>
-          <div class="sub">Enterprise submits technology or finance requirement on the portal.</div>
-        </div>
-        <div class="mm-flow-arrow">→</div>
-        <div class="mm-flow-step">
-          <div class="num">STEP · 02</div>
-          <div class="lbl">AI-based Matching</div>
-          <div class="sub">Algorithm shortlists suitable vendors and financial partners.</div>
-        </div>
-        <div class="mm-flow-arrow">→</div>
-        <div class="mm-flow-step">
-          <div class="num">STEP · 03</div>
-          <div class="lbl">Vendor / FI Connection</div>
-          <div class="sub">Guided introduction and diligence between matched parties.</div>
-        </div>
-        <div class="mm-flow-arrow">→</div>
-        <div class="mm-flow-step">
-          <div class="num">STEP · 04</div>
-          <div class="lbl">Deal Closure Support</div>
-          <div class="sub">Programme office supports paperwork and disbursal.</div>
-        </div>
-      </div>
-    </div>
-
-  </section>
 
   <!-- ============ ECOSYSTEM ============ -->
   <section id="ecosystem">
     <div class="eco-head">
-      <span class="eyebrow reveal">07 · Ecosystem Building</span>
+      <span class="eyebrow reveal">07 · Workshops &amp; Ecosystem</span>
       <h2 class="reveal reveal-d1">Creating a comprehensive <em>support system</em></h2>
       <p class="reveal reveal-d2">
         Workshops, technology demonstrations, and partnerships — bringing the
         programme directly into industrial clusters across the state.
       </p>
+      <div class="eco-cta reveal reveal-d2">
+        <button class="btn-primary" type="button" onclick="openRegModal()">Register for an upcoming workshop <span>→</span></button>
+        <button class="btn-ghost" type="button" onclick="openProgModal()">See the programme calendar</button>
+      </div>
     </div>
 
     <div class="eco-card reveal reveal-d1">
@@ -1583,6 +1386,58 @@
   </section>
 
   <!-- ============ TECHNOLOGY HUB ============ -->
+
+  <!-- ============ TEAM ============ -->
+  <section id="team">
+    <div class="team-head">
+      <span class="eyebrow reveal">09 · Team</span>
+      <h2 class="reveal reveal-d1">The institutions <em>behind the programme</em></h2>
+      <p class="reveal reveal-d2">
+        Greening of MSMEs in Telangana is delivered by a partnership of national and
+        state institutions, each carrying a defined role from policy through to
+        shop-floor assessment.
+      </p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card reveal reveal-d1">
+        <div class="team-card-logo"><img src="logos/RAMPLogo.png" alt="RAMP programme logo" loading="lazy" decoding="async"/></div>
+        <div>
+          <div class="team-card-role">Programme Sponsor</div>
+          <h3>Ministry of MSME · RAMP</h3>
+        </div>
+        <p>Raising and Accelerating MSME Performance — the World Bank-supported programme of the Government of India under which this greening initiative runs.</p>
+      </div>
+
+      <div class="team-card reveal reveal-d2">
+        <div class="team-card-logo"><img src="logos/tg.png" alt="Government of Telangana logo" loading="lazy" decoding="async"/></div>
+        <div>
+          <div class="team-card-role">State Partner</div>
+          <h3>Government of Telangana</h3>
+        </div>
+        <p>Industries &amp; Commerce department, directing cluster priorities and connecting the programme to state industrial policy.</p>
+      </div>
+
+      <div class="team-card reveal reveal-d3">
+        <div class="team-card-logo"><img src="logos/rich.png" alt="RICH logo" loading="lazy" decoding="async"/></div>
+        <div>
+          <div class="team-card-role">Implementing Agency</div>
+          <h3>Research and Innovation Circle of Hyderabad</h3>
+        </div>
+        <p>Runs the programme on the ground — MSME outreach, cluster engagement, assessment scheduling and the reporting behind this dashboard.</p>
+      </div>
+
+      <div class="team-card reveal reveal-d4">
+        <div class="team-card-logo"><img src="cii-logo.png" alt="CII logo" loading="lazy" decoding="async"/></div>
+        <div>
+          <div class="team-card-role">Technical Assistance &amp; Field Support Partner</div>
+          <h3>Confederation of Indian Industry</h3>
+        </div>
+        <p>Provides RECP technical expertise, assessor capacity and field support for workshops and shop-floor assessments.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="partners">
 
     <div class="th-head reveal">
@@ -1727,7 +1582,7 @@
         </p>
         <div class="join-cta reveal reveal-d3">
           <a class="btn-primary" href="https://cii.metaversedu.in/login" target="_blank" rel="noopener">Login to Portal →</a>
-          <a class="btn-ghost" href="https://forms.mycii.in/form/675a243b-b0d0-499a-93aa-e335e175e4f6" target="_blank" rel="noopener">Request an Assessment</a>
+          <a class="btn-ghost" href="https://forms.mycii.in/form/675a243b-b0d0-499a-93aa-e335e175e4f6" target="_blank" rel="noopener">Request a Free Energy Assessment</a>
         </div>
       </div>
       <div class="join-right reveal reveal-d2">
@@ -2075,10 +1930,11 @@
       names.forEach(n => {
         const b = LIVE.byDistrict.get(n);
         if(!b) return;
-        if(!hit) hit = { name:b.name, eois:0, asmts:0, tco2:0, kwh:0, lakhs:0, kl:0,
+        if(!hit) hit = { name:b.name, eois:0, asmts:0, tco2:0, kwh:0, lakhs:0, kl:0, thermalToe:0,
                          clusters:new Map(), sectors:new Map() };
         hit.eois += b.eois; hit.asmts += b.asmts;
         hit.tco2 += b.tco2; hit.kwh += b.kwh; hit.lakhs += b.lakhs; hit.kl += b.kl;
+        hit.thermalToe += (b.thermalToe || 0);
         b.clusters.forEach((v,k)=>hit.clusters.set(k,(hit.clusters.get(k)||0)+v));
         b.sectors.forEach((v,k)=>hit.sectors.set(k,(hit.sectors.get(k)||0)+v));
       });
@@ -2284,7 +2140,7 @@
           ${kpi('EoIs', inr(l.eois))}
           ${kpi('Assessments', inr(l.asmts))}
           ${kpi('CO₂ Saved', l.tco2 >= 1000 ? inr(l.tco2/1000) : inr(l.tco2), l.tco2 >= 1000 ? 'ktCO2e' : 'tCO2e')}
-          ${kpi('Energy', l.kwh >= 1e6 ? inr(l.kwh/1e6) : inr(l.kwh), l.kwh >= 1e6 ? 'MU/yr' : 'kWh/yr')}
+          ${kpi('Energy', inr((l.kwh * 860 / 1e7) + (l.thermalToe || 0)), 'TOE/yr')}
           ${kpi('Water', l.kl >= 1000 ? inr(l.kl/1000) : inr(l.kl), l.kl >= 1000 ? 'ML/yr' : 'kL/yr')}
           ${kpi('Cost', '₹' + (l.lakhs >= 100 ? inr(l.lakhs/100) : inr(l.lakhs)), l.lakhs >= 100 ? 'Cr' : 'Lakh')}
         </div>
@@ -2427,131 +2283,6 @@
       .catch(()=>{ loader.innerHTML = '<div class="map-loader-txt">Map unavailable — check connection</div>'; });
   })();
 
-  // -------- Pyramid stagger reveal --------
-  const pyramid = document.getElementById('pyramid');
-  const pyramidObs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        pyramid.querySelectorAll('.pyramid-row').forEach((row,i)=>{
-          setTimeout(()=>row.classList.add('in'), i*180+200);
-        });
-        pyramid.querySelectorAll('.count').forEach(runCounter);
-        pyramidObs.unobserve(e.target);
-      }
-    });
-  },{root:scroller,threshold:.3});
-  pyramidObs.observe(pyramid);
-
-  // -------- Sector Impact Dashboard --------
-  (function(){
-    const ARC_C = 150.8; // circumference = 2*π*24
-
-    /* Each element carries the id of the animation that owns it. Starting a
-       new one on the same element retires the old, so a late frame from the
-       previous sector cannot overwrite the current value. */
-    let animSeq = 0;
-    const own = el => { el.dataset.animSeq = String(++animSeq); return el.dataset.animSeq; };
-    const stillOwns = (el, id) => el.dataset.animSeq === id;
-
-    function animNum(el, to, dec, prefix, delay){
-      const id = own(el);
-      setTimeout(() => {
-        if(!stillOwns(el, id)) return;
-        const start = performance.now();
-        const dur = 1100;
-        function tick(now){
-          if(!stillOwns(el, id)) return;
-          const p = Math.min(1, (now - start) / dur);
-          const v = to * (1 - Math.pow(1 - p, 3));
-          el.textContent = prefix + (dec > 0 ? v.toFixed(dec) : Math.round(v).toLocaleString('en-IN'));
-          if(p < 1) requestAnimationFrame(tick);
-          else el.textContent = prefix + (dec > 0 ? to.toFixed(dec) : Math.round(to).toLocaleString('en-IN'));
-        }
-        requestAnimationFrame(tick);
-      }, delay);
-    }
-
-    /* No live data: show nothing rather than the old placeholder figures.
-       The data-ph/-it/-fo attributes in the markup were illustrative stand-ins
-       (that is where the flat "18 ML" water number came from) and must never
-       be mistaken for programme data. */
-    function clearSector(){
-      document.querySelectorAll('.fitem').forEach((item, i) => {
-        const bar = document.getElementById('fb' + i);
-        const val = document.getElementById('fv' + i);
-        if(bar) bar.style.width = '0%';
-        if(val){ own(val); val.textContent = '—'; }
-      });
-      document.querySelectorAll('.soc').forEach(card => {
-        const numEl  = card.querySelector('.soc-num');
-        const unitEl = card.querySelector('.soc-unit');
-        const arcEl  = card.querySelector('.arc-fg');
-        if(numEl){ own(numEl); numEl.textContent = '—'; }
-        if(unitEl) unitEl.textContent = '';
-        if(arcEl)  arcEl.style.strokeDashoffset = ARC_C;
-      });
-    }
-
-    function loadSector(sector){
-      // Live sector data wins whenever the API returned anything; an unknown
-      // key (e.g. the static 'pharma' kickoff) falls back to the first live sector.
-      const liveAll = window.MSME_SECTOR_DATA;
-      const live    = liveAll ? (liveAll[sector] || liveAll[Object.keys(liveAll)[0]]) : null;
-      if(!live) return clearSector();
-      const fitems = document.querySelectorAll('.fitem');
-      const maxRaw = Math.max(1, live.funnel[0].val);
-
-      // Funnel bars + values
-      fitems.forEach((item, i) => {
-        const step = live.funnel[i];
-        const raw  = step.val;
-        const pct  = Math.min(100, (raw / maxRaw) * 100);
-        const bar  = document.getElementById('fb' + i);
-        const valEl = document.getElementById('fv' + i);
-        if(step){
-          const nameEl = item.querySelector('.fi-name');
-          if(nameEl) nameEl.textContent = step.label;
-        }
-        bar.style.width = '0%';
-        setTimeout(() => { bar.style.width = pct + '%'; }, i * 90 + 50);
-        animNum(valEl, raw, 0, '', i * 90);
-      });
-
-      // Outcome cards
-      document.querySelectorAll('.soc').forEach((card, i) => {
-        const out    = live.outcomes[i];
-        if(out){
-          const lblEl = card.querySelector('.soc-label');
-          if(lblEl) lblEl.textContent = out.label;
-        }
-        const dec    = out.dec;
-        const prefix = out.prefix || '';
-        const val    = out.val;
-        const unit   = out.unit;
-        const arcMax = Math.max(out.max, val || 1);
-        const numEl  = card.querySelector('.soc-num');
-        const unitEl = card.querySelector('.soc-unit');
-        const arcEl  = card.querySelector('.arc-fg');
-        unitEl.textContent = ' ' + unit;
-        arcEl.style.strokeDashoffset = ARC_C; // reset
-        animNum(numEl, val, dec, prefix, i * 80);
-        setTimeout(() => {
-          arcEl.style.strokeDashoffset = ARC_C * (1 - val / arcMax);
-        }, i * 80 + 150);
-      });
-    }
-
-    // Expose so auto-cycle can call it
-    window._loadSector = loadSector;
-
-    // Tab clicks handled by sector ticker JS below
-
-    // Auto-fire when section scrolls into view
-    const sidObs = new IntersectionObserver(entries => {
-      if(entries[0].isIntersecting){ loadSector('pharma'); sidObs.disconnect(); }
-    }, { root: scroller, threshold: 0.25 });
-    sidObs.observe(document.getElementById('emissions'));
-  })();
 
   // initial nav tone (hero is dark)
   nav.classList.add('on-dark');
@@ -2586,87 +2317,6 @@
     start();
   })();
 
-  // ======== SECTOR TICKER ========
-  (function(){
-    const SECTORS = [
-      {key:'pharma',      label:'Pharmaceuticals'},
-      {key:'food',        label:'Food Processing'},
-      {key:'textiles',    label:'Textiles & Apparel'},
-      {key:'chemicals',   label:'Chemicals'},
-      {key:'engineering', label:'Engineering & Metal'},
-      {key:'plastics',    label:'Plastics & Rubber'},
-      {key:'paper',       label:'Paper & Printing'},
-      {key:'ceramics',    label:'Ceramics & Glass'},
-      {key:'granite',     label:'Granite & Stone'},
-      {key:'leather',     label:'Leather & Footwear'},
-      {key:'automotive',  label:'Automotive Parts'},
-      {key:'electronics', label:'Electronics'},
-      {key:'beverages',   label:'Beverages'},
-      {key:'construction',label:'Construction Matls'},
-      {key:'furniture',   label:'Wood & Furniture'},
-    ];
-
-    const ITEM_W = 180;  // px — must match CSS min-width of .stab
-    const CENTER = 2;    // index of visible center slot (0-based, out of 5 visible)
-    const DWELL  = 2000; // ms per sector
-
-    const ticker = document.getElementById('sectorTabs');
-    if(!ticker) return;
-
-    let SECTOR_LIST = SECTORS.slice();
-
-    function buildTabs(){
-      ticker.innerHTML = '';
-      SECTOR_LIST.forEach((s, i) => {
-        const btn = document.createElement('button');
-        btn.className = 'stab' + (i === 0 ? ' active' : '');
-        btn.dataset.sector = s.key;
-        btn.dataset.idx    = i;
-        btn.textContent    = s.label;
-        ticker.appendChild(btn);
-      });
-    }
-    buildTabs();
-
-    let idx = 0, timer = null;
-
-    function goTo(i){
-      idx = i;
-      ticker.querySelectorAll('.stab').forEach((b, j) => b.classList.toggle('active', j === i));
-      ticker.style.transform = `translateX(${(CENTER - i) * ITEM_W}px)`;
-      if(window._loadSector) window._loadSector(SECTOR_LIST[i].key);
-    }
-
-    function start(){
-      clearTimeout(timer);
-      if(SECTOR_LIST.length < 2) return;
-      timer = setTimeout(() => { goTo((idx + 1) % SECTOR_LIST.length); start(); }, DWELL);
-    }
-
-    // Live-data hook — analytics layer replaces the tab strip with API sectors.
-    window.MSME_TICKER = {
-      setSectors: function(list){
-        if(!list || !list.length) return;
-        SECTOR_LIST = list;
-        buildTabs();
-        goTo(0);
-        start();
-      }
-    };
-
-    ticker.addEventListener('click', e => {
-      const btn = e.target.closest('.stab');
-      if(!btn) return;
-      goTo(parseInt(btn.dataset.idx));
-      start();
-    });
-
-    const secEl = document.getElementById('emissions');
-    const obs = new IntersectionObserver(entries => {
-      if(entries[0].isIntersecting){ goTo(0); start(); obs.disconnect(); }
-    }, {root: document.getElementById('scroller'), threshold: 0.3});
-    obs.observe(secEl);
-  })();
 </script>
 
 
@@ -2678,11 +2328,12 @@
       'nav.about':    'About',
       'nav.ramp':     'RAMP',
       'nav.impact':   'Impact',
-      'nav.reach':    'Reach',
-      'nav.mm':       'Matchmaking',
+      'nav.reach':    'Districts',
+      'nav.workshops':'Workshops',
+      'nav.team':     'Team',
       'nav.eco':      'Ecosystem',
       'nav.partners': 'Partners',
-      'nav.login':    'Portal Login →',
+      'nav.login':    'Assessment Portal →',
       'hero.badge':   'Live Programme · FY 2025—26',
       'hero.eyebrow': 'A National Initiative for Sustainable MSMEs',
       'hero.title':   'Greening<br/>Telangana\'s <em>MSMEs</em>',
@@ -2711,17 +2362,18 @@
       'join.ey':      '09 · Join the Transition',
       'join.h2':      'Your green<br/>journey starts here',
       'join.cta1':    'Login to Portal →',
-      'join.cta2':    'Request an Assessment',
+      'join.cta2':    'Request a Free Energy Assessment',
     },
     hi: {
       'nav.about':    'परिचय',
       'nav.ramp':     'RAMP',
       'nav.impact':   'प्रभाव',
-      'nav.reach':    'पहुंच',
-      'nav.mm':       'मिलान',
+      'nav.reach':    'जिले',
+      'nav.workshops':'कार्यशालाएं',
+      'nav.team':     'टीम',
       'nav.eco':      'पारिस्थितिकी',
       'nav.partners': 'भागीदार',
-      'nav.login':    'पोर्टल लॉगिन →',
+      'nav.login':    'असेसमेंट पोर्टल →',
       'hero.badge':   'सक्रिय कार्यक्रम · वित्त वर्ष 2025-26',
       'hero.eyebrow': 'सतत MSMEs के लिए राष्ट्रीय पहल',
       'hero.title':   'भारत के<br/>लघु उद्योग को<br/>हरित बनाना।',
@@ -2756,11 +2408,12 @@
       'nav.about':    'గురించి',
       'nav.ramp':     'RAMP',
       'nav.impact':   'ప్రభావం',
-      'nav.reach':    'చేరువు',
-      'nav.mm':       'అనుసంధానం',
+      'nav.reach':    'జిల్లాలు',
+      'nav.workshops':'వర్క్‌షాప్‌లు',
+      'nav.team':     'బృందం',
       'nav.eco':      'పర్యావరణం',
       'nav.partners': 'భాగస్వాములు',
-      'nav.login':    'పోర్టల్ లాగిన్ →',
+      'nav.login':    'అసెస్‌మెంట్ పోర్టల్ →',
       'hero.badge':   'లైవ్ ప్రోగ్రామ్ · FY 2025-26',
       'hero.eyebrow': 'సుస్థిర MSMEల కోసం జాతీయ చొరవ',
       'hero.title':   'భారతదేశ<br/>చిన్న పరిశ్రమను<br/>హరితీకరించడం.',
@@ -2799,7 +2452,8 @@
     'nav.ramp':     '[data-i18n="nav.ramp"]',
     'nav.impact':   '[data-i18n="nav.impact"]',
     'nav.reach':    '[data-i18n="nav.reach"]',
-    'nav.mm':       '[data-i18n="nav.mm"]',
+    'nav.workshops':'[data-i18n="nav.workshops"]',
+    'nav.team':     '[data-i18n="nav.team"]',
     'nav.eco':      '[data-i18n="nav.eco"]',
     'nav.partners': '[data-i18n="nav.partners"]',
     'nav.login':    '[data-i18n="nav.login"]',
@@ -2866,14 +2520,10 @@
 
 <!-- ============ FLOATING ACTION BUTTONS ============ -->
 <div class="fab-group">
-  <button onclick="openProgModal()" class="fab-btn fab-find">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    Find Program
-  </button>
-  <button onclick="openRegModal()" class="fab-btn fab-register">
+  <a href="https://tg.ramp.metaversedu.in/" target="_blank" rel="noopener" class="fab-btn fab-register">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
-    Register Yourself
-  </button>
+    Request a Free Assessment
+  </a>
 </div>
 
 
@@ -3662,6 +3312,58 @@
   let cardEls   = [];
   let pathEls   = [];
 
+  /* Clicking a sector and/or a cluster filters the live figures to that
+     combination, so a visitor can read what one sector contributes inside
+     one cluster. */
+  var SEL = { sectorKey: null, sectorLabel: null, cluster: null };
+  var canvasRef = null;
+
+  function renderFilter() {
+    var strip = document.getElementById('fp-filter');
+    if (!strip) return;
+    var A = window.MSMEAnalytics && window.MSMEAnalytics.data;
+    if (!A || (!SEL.sectorKey && !SEL.cluster)) { strip.hidden = true; strip.innerHTML = ''; return; }
+
+    var rows = A.rows.filter(function(r) {
+      var okS = !SEL.sectorKey || window.MSMEAnalytics.classifySector(r.sector).key === SEL.sectorKey;
+      var okC = !SEL.cluster   || String(r.cluster || '').trim() === SEL.cluster;
+      return okS && okC;
+    });
+    var sum = function(f) { return rows.reduce(function(t, r) { return t + (Number(f(r)) || 0); }, 0); };
+    var inr = function(v) { return v.toLocaleString('en-IN', { maximumFractionDigits: 2 }); };
+
+    var tco2 = sum(function(r){ return r.tCO2Savings; });
+    var kwh  = sum(function(r){ return r.electricitySavingsInKwh; });
+    var kl   = sum(function(r){ return r.waterSavingsInKl; });
+    var lakh = sum(function(r){ return r.costSavingsInLakhs; });
+    var prop = sum(function(r){ return r.proposalsCreated; });
+
+    var parts = [];
+    if (SEL.sectorLabel || SEL.sectorKey) parts.push('Sector <b>' + (SEL.sectorLabel || SEL.sectorKey) + '</b>');
+    if (SEL.cluster) parts.push('Cluster <b>' + SEL.cluster + '</b>');
+
+    var fig = function(label, value) {
+      return '<span class="fp-filter-fig"><b>' + value + '</b>' + label + '</span>';
+    };
+    strip.innerHTML =
+      '<span class="fp-filter-sel">' + parts.join(' &nbsp;·&nbsp; ') + '</span>' +
+      '<span class="fp-filter-figs">' +
+        fig('EoIs', inr(rows.length)) +
+        fig('ktCO2e', inr(tco2 / 1000)) +
+        fig('MU/yr', inr(kwh / 1e6)) +
+        fig('kL/yr', inr(kl)) +
+        fig('Cr', '₹' + inr(lakh / 100)) +
+        fig('proposals', inr(prop)) +
+      '</span>' +
+      '<button class="fp-filter-clear" type="button">Clear</button>';
+    strip.hidden = false;
+    strip.querySelector('.fp-filter-clear').addEventListener('click', function() {
+      SEL = { sectorKey: null, sectorLabel: null, cluster: null };
+      render(canvasRef);
+      renderFilter();
+    });
+  }
+
   function computeLayout(w) {
     const colX = { sector: 0, cluster: (w - CW) / 2, metric: w - CW };
     const byType = { sector: [], cluster: [], metric: [] };
@@ -3926,6 +3628,26 @@
 
       if (node.bd) card.dataset.breakdown = node.bd;
 
+      // sectors and clusters are clickable filters; metrics are not
+      if (node.type === 'sector' || node.type === 'cluster') {
+        card.style.cursor = 'pointer';
+        var isOn = (node.type === 'sector' && SEL.sectorKey === node.key) ||
+                   (node.type === 'cluster' && SEL.cluster === node.name);
+        if (isOn) {
+          card.style.borderColor = th.accent;
+          card.style.boxShadow = '0 0 0 1.5px ' + th.accent;
+        }
+        card.addEventListener('click', function(ev) {
+          ev.stopPropagation();
+          if (node.type === 'sector') SEL.sectorKey = isOn ? null : node.key;
+          else                       SEL.cluster   = isOn ? null : node.name;
+          SEL.sectorLabel = node.type === 'sector' ? (isOn ? null : node.name) : SEL.sectorLabel;
+          hoverIdx = null;
+          render(canvas);
+          renderFilter();
+        });
+      }
+
       card.addEventListener('mouseenter', function() { hoverIdx = i; updateHover(); });
       card.addEventListener('mouseleave', function() { hoverIdx = null; updateHover(); });
 
@@ -3936,6 +3658,7 @@
 
   var canvas = document.getElementById('fp-canvas');
   if (!canvas) return;
+  canvasRef = canvas;
   render(canvas);
   var ro = new ResizeObserver(function() { hoverIdx = null; render(canvas); });
   ro.observe(canvas);
@@ -3949,6 +3672,7 @@
       MAX_V = links.reduce(function(m, l) { return Math.max(m, l.v); }, 1);
       hoverIdx = null;
       render(canvas);
+      renderFilter();
     }
   };
 })();
@@ -3962,8 +3686,6 @@
    aggregates into every chart on the page:
      - Impact Dashboard cards / hero stats   [data-api-metric]
      - District map tiles + drill-down       window.MSME_MAP
-     - Sector Impact funnel + outcome arcs   window.MSME_SECTOR_DATA
-     - Sector ticker tabs                    window.MSME_TICKER
      - Flow pathway (sector→cluster→metric)  window.MSME_FLOW
    Static values stay as fallback whenever the API is unreachable or an
    aggregate comes back empty/zero.
@@ -4185,7 +3907,7 @@
   /* ---------------- group ---------------- */
   function blank(name){
     return { name, eois:0, asmts:0, detailed:0, walkthrough:0, withSavings:0,
-             kwh:0, lakhs:0, tco2:0, kl:0, proposals:0 };
+             kwh:0, lakhs:0, tco2:0, kl:0, proposals:0, thermalToe:0 };
   }
   function add(bucket, r){
     bucket.eois++;
@@ -4202,6 +3924,8 @@
     bucket.tco2  += t;
     bucket.kl    += num(r.waterSavingsInKl);
     bucket.proposals += num(r.proposalsCreated);
+    // thermal savings are not in the analytics payload yet; read them if they appear
+    bucket.thermalToe += num(r.thermalSavingsInToe || r.fuelSavingsInToe);
   }
 
   const ym = d => {
@@ -4365,6 +4089,10 @@
       sectors:     bySector.size,
       clusters:    byCluster.size,
       kwh: totals.kwh, lakhs: totals.lakhs, tco2: totals.tco2, kl: totals.kl,
+      thermalToe: totals.thermalToe,
+      /* Energy is reported in TOE, per the programme's convention:
+         TOE = (electrical kWh x 860 / 10^7) + thermal TOE */
+      toe: (totals.kwh * 860 / 1e7) + totals.thermalToe,
       // the API reports this across the whole dataset; the row sum is the fallback
       proposalsCreated: num(serverTotals && serverTotals.totalProposalsCreated) || totals.proposals,
       serverTotals: serverTotals || null,
@@ -4403,6 +4131,8 @@
     assessments: (b, run) => run.asmts += b.asmts,
     co2:         (b, run) => run.tco2  += b.tco2,
     energy:      (b, run) => run.kwh   += b.kwh,
+    toe:         (b, run) => { run.kwh += b.kwh; run.thermalToe += (b.thermalToe || 0);
+                               return (run.kwh * 860 / 1e7) + run.thermalToe; },
     cost:        (b, run) => run.lakhs += b.lakhs,
     water:       (b, run) => run.kl    += b.kl,
     sectors:     (b, run) => { b.sectorKeys.forEach(k => run.seen.add(k)); return run.seen.size; },
@@ -4417,7 +4147,7 @@
     const buckets = agg.monthly.length >= 3 ? agg.monthly
                   : (agg.daily.length >= 3 ? agg.daily : null);
     if(!buckets) return null;
-    const run = { eois:0, asmts:0, tco2:0, kwh:0, lakhs:0, kl:0, seen:new Set() };
+    const run = { eois:0, asmts:0, tco2:0, kwh:0, lakhs:0, kl:0, thermalToe:0, seen:new Set() };
     const pts = buckets.map(b => pick(b, run));
     return pts.every(v => v === pts[0]) ? null : pts;
   }
@@ -4499,63 +4229,6 @@
     }
   }
 
-  /* ---------------- render: sector impact dashboard ---------------- */
-  function paintSectors(agg){
-    if(!agg.bySector.size) return;
-
-    const rank = b => (b.key === 'unspecified' ? 1 : 0);
-    const ordered = [...agg.bySector.values()]
-      .sort((a,b) => rank(a) - rank(b) || b.eois - a.eois);
-    const maxCo2    = Math.max(...ordered.map(s => s.tco2 / 1000), 0.001);
-    const maxEnergy = Math.max(...ordered.map(s => s.kwh / 1e6),   0.001);
-    const maxCost   = Math.max(...ordered.map(s => s.lakhs / 100), 0.001);
-    const maxWater  = Math.max(...ordered.map(s => s.kl), 0.001);
-
-    // keep big numbers readable: fewer decimals as magnitude grows
-    const dec = v => v >= 1000 ? 0 : (v >= 10 ? 1 : 2);
-
-    const data = {};
-    ordered.forEach(s => {
-      data[s.key] = {
-        label: s.name,
-        funnel: [
-          { label:'EoIs Received',          val: s.eois },
-          { label:'Assessments Assigned',   val: s.asmts },
-          { label:'Detailed Audits',        val: s.detailed },
-          { label:'Walkthrough Assessments',val: s.walkthrough },
-          { label:'Proposals Created',      val: s.proposals },
-        ],
-        outcomes: [
-          { label:'CO₂ Reduced', val: s.tco2/1000,  unit:'ktCO2e',  dec:dec(s.tco2/1000), max:maxCo2 },
-          { label:'Energy Saved',val: s.kwh/1e6,    unit:'MU/year', dec:dec(s.kwh/1e6),   max:maxEnergy },
-          { label:'Cost Saved',  val: s.lakhs/100,  unit:'Cr',      dec:dec(s.lakhs/100), max:maxCost, prefix:'₹' },
-          { label:'Water Saved', val: s.kl, unit:'kL/year', dec:dec(s.kl), max:maxWater },
-        ],
-      };
-    });
-
-    window.MSME_SECTOR_DATA = data;
-
-    // labels on the outcome cards follow the live metric set
-    const cards = document.querySelectorAll('.soc');
-    const first = data[ordered[0].key];
-    cards.forEach((card, i) => {
-      const out = first.outcomes[i];
-      if(!out) return;
-      const lbl = card.querySelector('.soc-label');
-      if(lbl) lbl.textContent = out.label;
-    });
-
-    if(window.MSME_TICKER){
-      window.MSME_TICKER.setSectors(ordered.map(s => ({ key:s.key, label:s.name })));
-      document.querySelectorAll('#sectorTabs .stab').forEach(tab => {
-        tab.dataset.breakdown = 'sector:' + tab.dataset.sector;
-      });
-    } else if(window._loadSector){
-      window._loadSector(ordered[0].key);
-    }
-  }
-
   /* ---------------- render: flow pathway ---------------- */
   function paintFlow(agg){
     if(!window.MSME_FLOW || !agg.bySector.size || !agg.byCluster.size) return;
@@ -4584,7 +4257,7 @@
     sectors.forEach(s => {
       const pop = sectorPop.get(s.key) || 0;
       nodes.push({
-        name: s.name, type:'sector', bd: 'sector:' + s.key,
+        name: s.name, type:'sector', key: s.key, bd: 'sector:' + s.key,
         val: (popForAll ? pop : s.eois).toLocaleString(),
         pct: popForAll
           ? ((pop / popTotal) * 100).toFixed(1) + '% of MSMEs'
@@ -4600,7 +4273,7 @@
     const metrics = [
       { name:'CO2 Reduction',    bd:'co2',    val: shortNum(agg.co2),    unit:'ktCO2e', pick: c => c.tco2 },
       { name:'Cost Savings',     bd:'cost',   val: '₹' + shortNum(agg.cost), unit:'Cr', pick: c => c.lakhs },
-      { name:'Energy Savings',   bd:'energy', val: shortNum(agg.energy), unit:'MU/yr',  pick: c => c.kwh },
+      { name:'Energy Savings',   bd:'toe',    val: shortNum(agg.toe),    unit:'TOE/yr', pick: c => c.kwh },
       { name:'Water Savings',    bd:'water',  val: shortNum(agg.kl),     unit:'kL/yr',  pick: c => c.kl },
       { name:'EoIs Received',    bd:'eois',        val: agg.eois.toLocaleString(),        unit:'EoIs',  pick: c => c.eois },
       { name:'Assessments Done', bd:'assessments', val: agg.assessments.toLocaleString(), unit:'MSMEs', pick: c => c.asmts },
@@ -4641,7 +4314,7 @@
         agg.co2.toFixed(2) + ' ktCO2e Savings',
       ];
       if(agg.cost > 0)   parts.push('₹' + agg.cost.toFixed(2) + ' Cr Cost Savings');
-      if(agg.energy > 0) parts.push(agg.energy.toFixed(2) + ' MU/yr Energy');
+      if(agg.toe > 0)    parts.push(agg.toe.toFixed(2) + ' TOE/yr Energy');
       if(agg.kl > 0)     parts.push(agg.kl.toLocaleString('en-IN') + ' kL/yr Water');
       ft.textContent = parts.join(' · ') + ' · Telangana RAMP Greening Programme';
     }
@@ -4669,6 +4342,9 @@
                    unit: () => ({ div:1, sfx:' MSMEs' }) },
     proposals:   { label:'Proposals Created', color:'#3a7a52', pick: b => b.proposals,
                    unit: () => ({ div:1, sfx:' proposals' }) },
+    toe:         { label:'Energy Saved', color:'#d4a63a',
+                   pick: b => (b.kwh * 860 / 1e7) + (b.thermalToe || 0),
+                   unit: () => ({ div:1, sfx:' TOE' }) },
     water:       { label:'Water Saved', color:'#3a7a52', pick: b => b.kl,
                    unit: peak => peak >= 1000 ? { div:1000, sfx:' ML' } : { div:1, sfx:' kL' } },
     msmesIdentified: { label:'MSMEs Identified', color:'#3a7a52', pick: b => b.msmes || 0,
@@ -4683,7 +4359,7 @@
   // one value, unit chosen from its own magnitude
   const fmtOne = (m, v) => fmtUnit(m.unit(v), v);
 
-  const ENTITY_ORDER = ['eois','assessments','proposals','co2','energy','water','cost','perMsme'];
+  const ENTITY_ORDER = ['eois','assessments','proposals','co2','toe','water','cost','perMsme'];
 
   let tip = null;
   function tipEl(){
@@ -4865,7 +4541,6 @@
     paintCounters(agg);
     if(eoiOk){
       paintMap(agg);
-      paintSectors(agg);
       paintFlow(agg);
       paintSparklines(agg);
     } else if(siteOk){
