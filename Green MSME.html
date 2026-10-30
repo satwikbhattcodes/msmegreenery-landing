@@ -605,59 +605,57 @@
 
 
   /* ===== Mission: programme value and onboarding (RAMP flyer) ===== */
-  .mission-head{max-width:860px;margin:0 0 42px}
-  .mission-head h2{font-family:var(--ff-serif);font-size:clamp(28px,3.5vw,54px);line-height:1.05;letter-spacing:-.025em;margin:14px 0 18px}
-  .mission-head h2 em{font-style:italic;color:var(--moss)}
-  .mission-head p{font-size:16px;line-height:1.65;color:rgba(14,26,20,.74);max-width:68ch}
-  .mission-value{display:flex;flex-direction:column;gap:38px}
-  .mv-k{font-family:var(--ff-mono);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:16px}
-  .mv-chips{display:flex;flex-wrap:wrap;gap:10px}
-  .mv-chip{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;color:var(--ink);
-    background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:9px 18px 9px 12px}
-  .mv-chip-i{width:24px;height:24px;border-radius:50%;background:var(--parchment-2);display:flex;align-items:center;justify-content:center;font-size:12px}
-  .mv-support{display:grid;grid-template-columns:minmax(190px,230px) 1fr;gap:28px;align-items:start;
-    background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:28px}
-  @media(max-width:760px){.mv-support{grid-template-columns:1fr}}
-  .mv-support-badge{background:var(--forest);color:var(--parchment);border-radius:8px;padding:22px 20px}
-  .mv-support-amt{font-family:var(--ff-serif);font-size:38px;line-height:1;letter-spacing:-.02em}
-  .mv-support-cap{font-size:13px;line-height:1.5;opacity:.86;margin-top:8px}
-  .mv-list{list-style:none;counter-reset:mv;display:grid;gap:16px}
-  .mv-list li{counter-increment:mv;position:relative;padding-left:38px}
-  .mv-list li::before{content:counter(mv);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;
-    background:var(--parchment-2);color:var(--forest);font-family:var(--ff-mono);font-size:11px;font-weight:700;
-    display:flex;align-items:center;justify-content:center}
-  .mv-list li b{display:block;font-family:var(--ff-serif);font-size:17px;font-weight:600;letter-spacing:-.01em;margin-bottom:3px}
-  .mv-list li span{font-size:13.5px;line-height:1.55;color:rgba(14,26,20,.68)}
-  .mv-gains{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-  .mv-gain{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:20px 22px}
-  .mv-gain-lead{background:var(--forest);border-color:var(--forest);color:var(--parchment)}
-  .mv-gain-h{font-family:var(--ff-serif);font-size:19px;font-weight:600;letter-spacing:-.01em;margin-bottom:7px}
-  .mv-gain p{font-size:13.5px;line-height:1.6;color:rgba(14,26,20,.7)}
-  .mv-gain.mv-gain-lead p{color:rgba(243,239,230,.9)}
-  .mv-gain.mv-gain-lead b{color:var(--leaf);font-weight:700}
-  .mv-cta{display:flex;justify-content:space-between;align-items:center;gap:26px;flex-wrap:wrap;
-    border-top:1px solid var(--line);padding-top:28px}
-  .mv-cta-h{font-family:var(--ff-serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin-bottom:5px}
-  .mv-cta p{font-size:14px;color:rgba(14,26,20,.68);line-height:1.55}
-  .mv-cta-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  #mission{justify-content:center;gap:28px}
+  .mv-top{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:start}
+  @media(max-width:1000px){.mv-top{grid-template-columns:1fr;gap:34px}}
+  .mv-intro h2{font-family:var(--ff-serif);font-size:clamp(30px,3.6vw,56px);line-height:1.03;letter-spacing:-.028em;margin:14px 0 20px}
+  .mv-intro h2 em{font-style:italic;color:var(--moss)}
+  .mv-intro p{font-size:15.5px;line-height:1.65;color:rgba(14,26,20,.72);max-width:54ch}
+  .mv-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:22px}
   .mv-contact{display:flex;flex-direction:column;gap:2px;font-family:var(--ff-mono);font-size:11px}
   .mv-contact a{color:var(--moss);text-decoration:none}
   .mv-contact a:hover{text-decoration:underline}
 
-  /* ===== RAMP flyers ===== */
-  .ramp-flyers{margin-top:52px;padding-top:36px;border-top:1px solid var(--line)}
-  .ramp-flyers-head{margin-bottom:24px}
-  .ramp-flyers-k{font-family:var(--ff-mono);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--moss);margin-bottom:8px}
-  .ramp-flyers-head h3{font-family:var(--ff-serif);font-size:clamp(22px,2.4vw,30px);font-weight:600;letter-spacing:-.02em;line-height:1.15}
-  .ramp-flyers-head p{font-size:14px;color:rgba(14,26,20,.68);line-height:1.6;max-width:56ch;margin-top:8px}
-  .ramp-flyer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:760px}
-  .ramp-flyer{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px;transition:border-color .2s,box-shadow .2s}
-  .ramp-flyer:hover{border-color:var(--moss);box-shadow:0 6px 24px rgba(58,122,82,.14)}
-  .ramp-flyer img{width:100%;height:auto;display:block;border-radius:4px}
-  .ramp-flyer figcaption{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 4px 2px}
-  .ramp-flyer-lang{font-family:var(--ff-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(14,26,20,.6)}
-  .ramp-flyer-dl{font-family:var(--ff-mono);font-size:10px;letter-spacing:.08em;color:var(--forest);text-decoration:none;border:1px solid rgba(58,122,82,.3);border-radius:999px;padding:4px 10px}
-  .ramp-flyer-dl:hover{background:rgba(58,122,82,.1)}
+  /* the offer, as the one dark element on the page */
+  .mv-offer{background:var(--forest);color:var(--parchment);border-radius:12px;padding:22px 26px 20px;
+    box-shadow:0 18px 44px rgba(15,58,40,.18)}
+  .mv-offer-top{padding-bottom:14px;margin-bottom:15px;border-bottom:1px solid rgba(243,239,230,.18)}
+  .mv-offer-amt{font-family:var(--ff-serif);font-size:clamp(34px,3.4vw,46px);line-height:1;letter-spacing:-.03em;color:var(--leaf)}
+  .mv-offer-cap{font-family:var(--ff-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:rgba(243,239,230,.74);margin-top:9px}
+  .mv-offer-list{list-style:none;counter-reset:mv;display:grid;gap:11px}
+  .mv-offer-list li{counter-increment:mv;position:relative;padding-left:30px}
+  .mv-offer-list li::before{content:counter(mv);position:absolute;left:0;top:1px;width:19px;height:19px;border-radius:50%;
+    background:rgba(243,239,230,.14);color:var(--parchment);font-family:var(--ff-mono);font-size:9.5px;font-weight:700;
+    display:flex;align-items:center;justify-content:center}
+  .mv-offer-list li b{display:block;font-size:14px;font-weight:600;letter-spacing:-.01em;margin-bottom:2px}
+  .mv-offer-list li span{font-size:12px;line-height:1.5;color:rgba(243,239,230,.66)}
+
+  /* three supporting columns */
+  .mv-bottom{display:grid;grid-template-columns:1.05fr 1.15fr .72fr;gap:38px;padding-top:26px;border-top:1px solid var(--line)}
+  @media(max-width:1000px){.mv-bottom{grid-template-columns:1fr 1fr;gap:30px}}
+  @media(max-width:700px){.mv-bottom{grid-template-columns:1fr}}
+  .mv-k{font-family:var(--ff-mono);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--moss);margin-bottom:13px}
+  .mv-problems{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 16px}
+  @media(max-width:700px){.mv-problems{grid-template-columns:1fr}}
+  .mv-problems li{display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:500;color:rgba(14,26,20,.82);line-height:1.3}
+  .mv-problems li span{width:24px;height:24px;flex:0 0 24px;border-radius:50%;background:var(--parchment-2);
+    display:flex;align-items:center;justify-content:center;font-size:12px}
+  .mv-gain-row{display:flex;gap:14px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line)}
+  .mv-gain-row:last-child{border-bottom:none}
+  .mv-gain-fig{flex:0 0 46px;font-family:var(--ff-serif);font-size:25px;line-height:1;letter-spacing:-.02em;color:var(--terracotta)}
+  .mv-gain-row b{display:block;font-size:14px;font-weight:600;letter-spacing:-.01em;margin-bottom:2px}
+  .mv-gain-row span{font-size:12.5px;line-height:1.5;color:rgba(14,26,20,.64)}
+  .mv-flyer-row{display:flex;gap:12px}
+  .mv-flyer{flex:1;min-width:0}
+  .mv-flyer img{width:100%;height:auto;display:block;border-radius:5px;border:1px solid var(--line);
+    transition:border-color .2s,box-shadow .2s}
+  .mv-flyer:hover img{border-color:var(--moss);box-shadow:0 6px 18px rgba(58,122,82,.16)}
+  .mv-flyer figcaption{margin-top:7px;text-align:center}
+  .mv-flyer figcaption a{font-family:var(--ff-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--moss);text-decoration:none}
+  .mv-flyer figcaption a:hover{text-decoration:underline}
 
   /* ===== TEAM ===== */
   #team{background:var(--parchment);color:var(--ink)}
@@ -911,71 +909,16 @@
 
   <!-- ============ MISSION ============ -->
   <section id="mission">
-    <div class="mission-head">
-      <span class="eyebrow reveal">01 · Greening of MSMEs</span>
-      <h2 class="reveal reveal-d1">Cut your bills. <em>Clean up your process.</em> We pay for the work.</h2>
-      <p class="reveal reveal-d2">
-        The Government of Telangana has launched the RAMP programme to help MSMEs become
-        more competitive — improving access to markets and credit, strengthening
-        coordination between departments, and encouraging cleaner, more efficient
-        operations. Your enterprise pays nothing to take part.
-      </p>
-    </div>
-
-    <div class="mission-value">
-      <!-- Challenges -->
-      <div class="mv-block reveal reveal-d1">
-        <div class="mv-k">Are you facing these challenges?</div>
-        <div class="mv-chips">
-          <span class="mv-chip"><span class="mv-chip-i">⚡</span>Rising electricity cost</span>
-          <span class="mv-chip"><span class="mv-chip-i">⚙</span>Improving process efficiency</span>
-          <span class="mv-chip"><span class="mv-chip-i">💧</span>Waste water management</span>
-          <span class="mv-chip"><span class="mv-chip-i">🌫</span>CO₂ emissions</span>
-          <span class="mv-chip"><span class="mv-chip-i">♻</span>Solid waste management</span>
-          <span class="mv-chip"><span class="mv-chip-i">🔧</span>Which clean technology to adopt</span>
-        </div>
-      </div>
-
-      <!-- What the programme gives you -->
-      <div class="mv-support reveal reveal-d2">
-        <div class="mv-support-badge">
-          <div class="mv-support-amt">₹10 lakh</div>
-          <div class="mv-support-cap">of support services, free of cost</div>
-        </div>
-        <ol class="mv-list">
-          <li><b>Detailed project reports</b><span>Shop-floor assessment by RECP experts, with costed measures and payback.</span></li>
-          <li><b>Access to government schemes</b><span>Matched to the measures your assessment recommends.</span></li>
-          <li><b>Assistance with loans</b><span>Introductions to financial institutions funding green upgrades.</span></li>
-          <li><b>Recognition as a Clean MSME</b><span>Credentials your buyers and regulators recognise.</span></li>
-        </ol>
-      </div>
-
-      <!-- Outcomes -->
-      <div class="mv-block reveal reveal-d3">
-        <div class="mv-k">What your enterprise gains</div>
-        <div class="mv-gains">
-          <div class="mv-gain">
-            <div class="mv-gain-h">Operational efficiency</div>
-            <p>Lower energy and water consumed per unit produced.</p>
-          </div>
-          <div class="mv-gain mv-gain-lead">
-            <div class="mv-gain-h">Cost reduction</div>
-            <p>Improved sustainability delivering a <b>minimum 10% saving</b> on operational cost.</p>
-          </div>
-          <div class="mv-gain">
-            <div class="mv-gain-h">Regulatory compliance</div>
-            <p>Readiness for emissions, effluent and waste norms.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Join -->
-      <div class="mv-cta reveal reveal-d4">
-        <div>
-          <div class="mv-cta-h">Join the movement</div>
-          <p>Register your enterprise and the programme office will arrange your assessment.</p>
-        </div>
-        <div class="mv-cta-actions">
+    <div class="mv-top">
+      <div class="mv-intro">
+        <span class="eyebrow reveal">01 · Greening of MSMEs</span>
+        <h2 class="reveal reveal-d1">Cut your costs.<br/><em>We cover the cost of finding out how.</em></h2>
+        <p class="reveal reveal-d2">
+          The Government of Telangana has launched the RAMP programme to help MSMEs become
+          more competitive — better access to markets and credit, and cleaner, more efficient
+          operations. Taking part costs your enterprise nothing.
+        </p>
+        <div class="mv-actions reveal reveal-d3">
           <a class="btn-primary" href="https://tg.ramp.metaversedu.in/" target="_blank" rel="noopener">Request a Free Energy Assessment <span>→</span></a>
           <div class="mv-contact">
             <a href="mailto:ramp.telangana@cii.in">ramp.telangana@cii.in</a>
@@ -983,36 +926,66 @@
           </div>
         </div>
       </div>
+
+      <aside class="mv-offer reveal reveal-d2">
+        <div class="mv-offer-top">
+          <div class="mv-offer-amt">₹10 lakh</div>
+          <div class="mv-offer-cap">of support services, free of cost</div>
+        </div>
+        <ol class="mv-offer-list">
+          <li><b>Detailed project report</b><span>Shop-floor assessment by RECP experts, with costed measures and payback</span></li>
+          <li><b>Access to government schemes</b><span>Matched to the measures your report recommends</span></li>
+          <li><b>Assistance with loans</b><span>Introductions to financial institutions funding green upgrades</span></li>
+          <li><b>Recognition as a Clean MSME</b><span>Credentials your buyers and regulators recognise</span></li>
+        </ol>
+      </aside>
     </div>
 
-    <!-- Programme flyers -->
-    <div class="ramp-flyers reveal">
-      <div class="ramp-flyers-head">
-        <div>
-          <div class="ramp-flyers-k">Programme flyer</div>
-          <h3>RAMP benefits, explained on one page</h3>
-          <p>The same offer in print — challenges, the free support services and what your enterprise gains. Open or download a copy to share with your cluster.</p>
+    <div class="mv-bottom">
+      <div class="mv-col reveal reveal-d3">
+        <div class="mv-k">Are you facing these?</div>
+        <ul class="mv-problems">
+          <li><span>⚡</span>Electricity cost</li>
+          <li><span>⚙</span>Process efficiency</li>
+          <li><span>💧</span>Waste water</li>
+          <li><span>🌫</span>CO₂ emissions</li>
+          <li><span>♻</span>Solid waste</li>
+          <li><span>🔧</span>Choosing technology</li>
+        </ul>
+      </div>
+
+      <div class="mv-col mv-col-gains reveal reveal-d4">
+        <div class="mv-k">What you gain</div>
+        <div class="mv-gain-row">
+          <div class="mv-gain-fig">10%</div>
+          <div><b>Cost reduction, minimum</b><span>Improved sustainability, measured on your operational cost</span></div>
+        </div>
+        <div class="mv-gain-row">
+          <div class="mv-gain-fig">↑</div>
+          <div><b>Operational efficiency</b><span>Less energy and water per unit produced</span></div>
+        </div>
+        <div class="mv-gain-row">
+          <div class="mv-gain-fig">✓</div>
+          <div><b>Regulatory compliance</b><span>Ready for emissions, effluent and waste norms</span></div>
         </div>
       </div>
-      <div class="ramp-flyer-grid">
-        <figure class="ramp-flyer">
-          <a href="flyers/ramp-flyer-en.jpg" target="_blank" rel="noopener">
-            <img src="flyers/ramp-flyer-en.jpg" alt="RAMP programme flyer in English: challenges, programme support worth 10 lakh rupees free, and benefits to MSMEs" loading="lazy" decoding="async"/>
-          </a>
-          <figcaption>
-            <span class="ramp-flyer-lang">English</span>
-            <a class="ramp-flyer-dl" href="flyers/ramp-flyer-en.jpg" download>Download ↓</a>
-          </figcaption>
-        </figure>
-        <figure class="ramp-flyer">
-          <a href="flyers/ramp-flyer-te.jpg" target="_blank" rel="noopener">
-            <img src="flyers/ramp-flyer-te.jpg" alt="RAMP programme flyer in Telugu" loading="lazy" decoding="async"/>
-          </a>
-          <figcaption>
-            <span class="ramp-flyer-lang">తెలుగు · Telugu</span>
-            <a class="ramp-flyer-dl" href="flyers/ramp-flyer-te.jpg" download>Download ↓</a>
-          </figcaption>
-        </figure>
+
+      <div class="mv-col mv-col-flyer reveal reveal-d4">
+        <div class="mv-k">The flyer</div>
+        <div class="mv-flyer-row">
+          <figure class="mv-flyer">
+            <a href="flyers/ramp-flyer-en.jpg" target="_blank" rel="noopener">
+              <img src="flyers/ramp-flyer-en.jpg" alt="RAMP programme flyer in English" loading="lazy" decoding="async"/>
+            </a>
+            <figcaption><a href="flyers/ramp-flyer-en.jpg" download>English ↓</a></figcaption>
+          </figure>
+          <figure class="mv-flyer">
+            <a href="flyers/ramp-flyer-te.jpg" target="_blank" rel="noopener">
+              <img src="flyers/ramp-flyer-te.jpg" alt="RAMP programme flyer in Telugu" loading="lazy" decoding="async"/>
+            </a>
+            <figcaption><a href="flyers/ramp-flyer-te.jpg" download>తెలుగు ↓</a></figcaption>
+          </figure>
+        </div>
       </div>
     </div>
   </section>
