@@ -604,23 +604,45 @@
 
 
 
-  /* ===== RAMP value proposition (flyer content) ===== */
-  .ramp-offer{display:flex;flex-direction:column;gap:26px}
-  .ramp-offer-hd{font-family:var(--ff-mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--moss);margin-bottom:12px}
-  .ramp-offer-hd b{color:var(--terracotta)}
-  .ramp-chips{display:flex;flex-wrap:wrap;gap:8px}
-  .ramp-chip{font-size:12.5px;font-weight:600;color:var(--ink);background:var(--parchment-2);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
-  .ramp-list{list-style:none;counter-reset:ro;display:grid;gap:9px}
-  .ramp-list li{counter-increment:ro;position:relative;padding-left:30px;font-size:14px;line-height:1.55;color:rgba(14,26,20,.82)}
-  .ramp-list li::before{content:counter(ro);position:absolute;left:0;top:1px;width:20px;height:20px;border-radius:50%;background:var(--forest);color:var(--parchment);font-family:var(--ff-mono);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
-  .ramp-gains{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
-  .ramp-gain{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px 16px}
-  .ramp-gain-k{font-family:var(--ff-serif);font-size:16px;font-weight:600;margin-bottom:5px;letter-spacing:-.01em}
-  .ramp-gain p{font-size:12.5px;line-height:1.55;color:rgba(14,26,20,.68)}
-  .ramp-offer-cta{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-  .ramp-contact{display:flex;flex-direction:column;gap:2px;font-family:var(--ff-mono);font-size:11px}
-  .ramp-contact a{color:var(--moss);text-decoration:none}
-  .ramp-contact a:hover{text-decoration:underline}
+  /* ===== Mission: programme value and onboarding (RAMP flyer) ===== */
+  .mission-head{max-width:860px;margin:0 0 42px}
+  .mission-head h2{font-family:var(--ff-serif);font-size:clamp(28px,3.5vw,54px);line-height:1.05;letter-spacing:-.025em;margin:14px 0 18px}
+  .mission-head h2 em{font-style:italic;color:var(--moss)}
+  .mission-head p{font-size:16px;line-height:1.65;color:rgba(14,26,20,.74);max-width:68ch}
+  .mission-value{display:flex;flex-direction:column;gap:38px}
+  .mv-k{font-family:var(--ff-mono);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:16px}
+  .mv-chips{display:flex;flex-wrap:wrap;gap:10px}
+  .mv-chip{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;color:var(--ink);
+    background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:9px 18px 9px 12px}
+  .mv-chip-i{width:24px;height:24px;border-radius:50%;background:var(--parchment-2);display:flex;align-items:center;justify-content:center;font-size:12px}
+  .mv-support{display:grid;grid-template-columns:minmax(190px,230px) 1fr;gap:28px;align-items:start;
+    background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:28px}
+  @media(max-width:760px){.mv-support{grid-template-columns:1fr}}
+  .mv-support-badge{background:var(--forest);color:var(--parchment);border-radius:8px;padding:22px 20px}
+  .mv-support-amt{font-family:var(--ff-serif);font-size:38px;line-height:1;letter-spacing:-.02em}
+  .mv-support-cap{font-size:13px;line-height:1.5;opacity:.86;margin-top:8px}
+  .mv-list{list-style:none;counter-reset:mv;display:grid;gap:16px}
+  .mv-list li{counter-increment:mv;position:relative;padding-left:38px}
+  .mv-list li::before{content:counter(mv);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;
+    background:var(--parchment-2);color:var(--forest);font-family:var(--ff-mono);font-size:11px;font-weight:700;
+    display:flex;align-items:center;justify-content:center}
+  .mv-list li b{display:block;font-family:var(--ff-serif);font-size:17px;font-weight:600;letter-spacing:-.01em;margin-bottom:3px}
+  .mv-list li span{font-size:13.5px;line-height:1.55;color:rgba(14,26,20,.68)}
+  .mv-gains{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .mv-gain{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:20px 22px}
+  .mv-gain-lead{background:var(--forest);border-color:var(--forest);color:var(--parchment)}
+  .mv-gain-h{font-family:var(--ff-serif);font-size:19px;font-weight:600;letter-spacing:-.01em;margin-bottom:7px}
+  .mv-gain p{font-size:13.5px;line-height:1.6;color:rgba(14,26,20,.7)}
+  .mv-gain.mv-gain-lead p{color:rgba(243,239,230,.9)}
+  .mv-gain.mv-gain-lead b{color:var(--leaf);font-weight:700}
+  .mv-cta{display:flex;justify-content:space-between;align-items:center;gap:26px;flex-wrap:wrap;
+    border-top:1px solid var(--line);padding-top:28px}
+  .mv-cta-h{font-family:var(--ff-serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin-bottom:5px}
+  .mv-cta p{font-size:14px;color:rgba(14,26,20,.68);line-height:1.55}
+  .mv-cta-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .mv-contact{display:flex;flex-direction:column;gap:2px;font-family:var(--ff-mono);font-size:11px}
+  .mv-contact a{color:var(--moss);text-decoration:none}
+  .mv-contact a:hover{text-decoration:underline}
 
   /* ===== RAMP flyers ===== */
   .ramp-flyers{margin-top:52px;padding-top:36px;border-top:1px solid var(--line)}
@@ -889,108 +911,73 @@
 
   <!-- ============ MISSION ============ -->
   <section id="mission">
-    <div class="mission-grid">
-      <div class="mission-left">
-        <span class="eyebrow reveal">01 · Our Mission</span>
-        <h2 class="reveal reveal-d1">A new era of<br/><em>resource-efficient</em><br/>enterprise</h2>
-        <p class="reveal reveal-d2">
-          MSMEs form the backbone of India's economy. Their transition to sustainable
-          operations is central to the nation's Net Zero commitments and long-term
-          industrial competitiveness.
-        </p>
-        <p class="reveal reveal-d3">
-          This initiative equips enterprises with the technology, expert guidance,
-          and financing pathways required to thrive in a decarbonising world.
-        </p>
-
-        <div class="mission-pillars reveal reveal-d4">
-          <div class="pillar">
-            <span class="pillar-num">P · 01</span>
-            <span class="pillar-title">Resource Efficiency</span>
-            <span class="pillar-arrow">↗</span>
-          </div>
-          <div class="pillar">
-            <span class="pillar-num">P · 02</span>
-            <span class="pillar-title">Expert Guidance</span>
-            <span class="pillar-arrow">↗</span>
-          </div>
-          <div class="pillar">
-            <span class="pillar-num">P · 03</span>
-            <span class="pillar-title">Global Alignment</span>
-            <span class="pillar-arrow">↗</span>
-          </div>
-          <div class="pillar">
-            <span class="pillar-num">P · 04</span>
-            <span class="pillar-title">Cleaner Production</span>
-            <span class="pillar-arrow">↗</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="mission-visual reveal reveal-d2">
-        <span class="tag">FIELD · TELANGANA</span>
-        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=1400" alt="Sustainable industrial facility"/>
-        <div class="caption">
-          <h4>From smokestacks to solar arrays</h4>
-          <p>Industrial modernisation in progress across India.</p>
-        </div>
-      </div>
+    <div class="mission-head">
+      <span class="eyebrow reveal">01 · Greening of MSMEs</span>
+      <h2 class="reveal reveal-d1">Cut your bills. <em>Clean up your process.</em> We pay for the work.</h2>
+      <p class="reveal reveal-d2">
+        The Government of Telangana has launched the RAMP programme to help MSMEs become
+        more competitive — improving access to markets and credit, strengthening
+        coordination between departments, and encouraging cleaner, more efficient
+        operations. Your enterprise pays nothing to take part.
+      </p>
     </div>
-  </section>
 
-  <!-- ============ RAMP PROGRAMME ============ -->
-  <section id="ramp">
-    <div class="ramp-layout">
-      <!-- Left column -->
-      <div class="ramp-left">
-        <span class="eyebrow reveal" data-i18n="ramp.eyebrow">About · RAMP Programme</span>
-        <h2 class="reveal reveal-d1">Raising &amp;<br/>Accelerating<br/><em>MSME Performance</em></h2>
-        <p class="reveal reveal-d2" data-i18n="ramp.intro">RAMP is a World Bank-supported programme of the Government of India, implemented by the Ministry of MSME. It aims to improve the performance and competitiveness of MSMEs through five thematic components — the fourth of which is this Greening initiative.</p>
-        <div class="ramp-badge-row reveal" style="margin-bottom:16px">
-          <span class="ramp-badge wb"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>World Bank Supported</span>
-          <span class="ramp-badge goi"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Ministry of MSME, GoI</span>
+    <div class="mission-value">
+      <!-- Challenges -->
+      <div class="mv-block reveal reveal-d1">
+        <div class="mv-k">Are you facing these challenges?</div>
+        <div class="mv-chips">
+          <span class="mv-chip"><span class="mv-chip-i">⚡</span>Rising electricity cost</span>
+          <span class="mv-chip"><span class="mv-chip-i">⚙</span>Improving process efficiency</span>
+          <span class="mv-chip"><span class="mv-chip-i">💧</span>Waste water management</span>
+          <span class="mv-chip"><span class="mv-chip-i">🌫</span>CO₂ emissions</span>
+          <span class="mv-chip"><span class="mv-chip-i">♻</span>Solid waste management</span>
+          <span class="mv-chip"><span class="mv-chip-i">🔧</span>Which clean technology to adopt</span>
         </div>
-        <a href="https://tg.ramp.metaversedu.in" target="_blank" rel="noopener" class="reveal" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 20px;border-radius:999px;background:var(--forest);color:#fff;font-size:13px;font-weight:700;font-family:var(--ff-sans);transition:background .2s,transform .2s;text-decoration:none">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Visit Telangana RAMP Portal
-        </a>
       </div>
-      <!-- Right column — what the programme offers an MSME (RAMP flyer) -->
-      <div class="ramp-offer reveal reveal-d1">
-        <div class="ramp-offer-block">
-          <div class="ramp-offer-hd">Are you facing these challenges?</div>
-          <div class="ramp-chips">
-            <span class="ramp-chip">Rising electricity cost</span>
-            <span class="ramp-chip">Process efficiency</span>
-            <span class="ramp-chip">Waste water management</span>
-            <span class="ramp-chip">CO₂ emissions</span>
-            <span class="ramp-chip">Solid waste management</span>
-            <span class="ramp-chip">Clean technology options</span>
+
+      <!-- What the programme gives you -->
+      <div class="mv-support reveal reveal-d2">
+        <div class="mv-support-badge">
+          <div class="mv-support-amt">₹10 lakh</div>
+          <div class="mv-support-cap">of support services, free of cost</div>
+        </div>
+        <ol class="mv-list">
+          <li><b>Detailed project reports</b><span>Shop-floor assessment by RECP experts, with costed measures and payback.</span></li>
+          <li><b>Access to government schemes</b><span>Matched to the measures your assessment recommends.</span></li>
+          <li><b>Assistance with loans</b><span>Introductions to financial institutions funding green upgrades.</span></li>
+          <li><b>Recognition as a Clean MSME</b><span>Credentials your buyers and regulators recognise.</span></li>
+        </ol>
+      </div>
+
+      <!-- Outcomes -->
+      <div class="mv-block reveal reveal-d3">
+        <div class="mv-k">What your enterprise gains</div>
+        <div class="mv-gains">
+          <div class="mv-gain">
+            <div class="mv-gain-h">Operational efficiency</div>
+            <p>Lower energy and water consumed per unit produced.</p>
+          </div>
+          <div class="mv-gain mv-gain-lead">
+            <div class="mv-gain-h">Cost reduction</div>
+            <p>Improved sustainability delivering a <b>minimum 10% saving</b> on operational cost.</p>
+          </div>
+          <div class="mv-gain">
+            <div class="mv-gain-h">Regulatory compliance</div>
+            <p>Readiness for emissions, effluent and waste norms.</p>
           </div>
         </div>
+      </div>
 
-        <div class="ramp-offer-block">
-          <div class="ramp-offer-hd">Support services worth <b>₹10 lakh</b>, free of cost</div>
-          <ol class="ramp-list">
-            <li><b>Detailed project reports</b> prepared by RECP experts</li>
-            <li><b>Access to government schemes</b> and subsidies</li>
-            <li><b>Assistance with loans</b> and financial institutions</li>
-            <li><b>Recognition as a Clean MSME</b></li>
-          </ol>
+      <!-- Join -->
+      <div class="mv-cta reveal reveal-d4">
+        <div>
+          <div class="mv-cta-h">Join the movement</div>
+          <p>Register your enterprise and the programme office will arrange your assessment.</p>
         </div>
-
-        <div class="ramp-offer-block">
-          <div class="ramp-offer-hd">What your enterprise gains</div>
-          <div class="ramp-gains">
-            <div class="ramp-gain"><div class="ramp-gain-k">Operational efficiency</div><p>Lower specific energy and water consumption on the shop floor.</p></div>
-            <div class="ramp-gain"><div class="ramp-gain-k">Cost reduction</div><p>Minimum 10% saving on operational cost through implemented measures.</p></div>
-            <div class="ramp-gain"><div class="ramp-gain-k">Regulatory compliance</div><p>Readiness for emissions, effluent and waste norms.</p></div>
-          </div>
-        </div>
-
-        <div class="ramp-offer-cta">
-          <a href="https://tg.ramp.metaversedu.in/" target="_blank" rel="noopener" class="btn-primary">Request a Free Energy Assessment <span>→</span></a>
-          <div class="ramp-contact">
+        <div class="mv-cta-actions">
+          <a class="btn-primary" href="https://tg.ramp.metaversedu.in/" target="_blank" rel="noopener">Request a Free Energy Assessment <span>→</span></a>
+          <div class="mv-contact">
             <a href="mailto:ramp.telangana@cii.in">ramp.telangana@cii.in</a>
             <a href="tel:+919989992902">+91 99899 92902</a>
           </div>
@@ -1028,7 +1015,69 @@
         </figure>
       </div>
     </div>
+  </section>
 
+  <!-- ============ RAMP PROGRAMME ============ -->
+  <section id="ramp">
+    <div class="ramp-layout">
+      <!-- Left column -->
+      <div class="ramp-left">
+        <span class="eyebrow reveal" data-i18n="ramp.eyebrow">About · RAMP Programme</span>
+        <h2 class="reveal reveal-d1">Raising &amp;<br/>Accelerating<br/><em>MSME Performance</em></h2>
+        <p class="reveal reveal-d2" data-i18n="ramp.intro">RAMP is a World Bank-supported programme of the Government of India, implemented by the Ministry of MSME. It aims to improve the performance and competitiveness of MSMEs through five thematic components — the fourth of which is this Greening initiative.</p>
+        <div class="ramp-badge-row reveal" style="margin-bottom:16px">
+          <span class="ramp-badge wb"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>World Bank Supported</span>
+          <span class="ramp-badge goi"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Ministry of MSME, GoI</span>
+        </div>
+        <a href="https://tg.ramp.metaversedu.in" target="_blank" rel="noopener" class="reveal" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 20px;border-radius:999px;background:var(--forest);color:#fff;font-size:13px;font-weight:700;font-family:var(--ff-sans);transition:background .2s,transform .2s;text-decoration:none">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Visit Telangana RAMP Portal
+        </a>
+      </div>
+      <!-- Right column — 5 components -->
+      <div class="ramp-components reveal reveal-d1">
+        <div class="ramp-comp">
+          <div class="ramp-comp-num">01</div>
+          <div class="ramp-comp-body">
+            <div class="ramp-comp-title">Centre–State Linkages</div>
+            <div class="ramp-comp-desc">Strengthening policy coordination between the central government and state MSME bodies for faster implementation.</div>
+          </div>
+          <span class="ramp-comp-tag">Component</span>
+        </div>
+        <div class="ramp-comp">
+          <div class="ramp-comp-num">02</div>
+          <div class="ramp-comp-body">
+            <div class="ramp-comp-title">Access to Finance</div>
+            <div class="ramp-comp-desc">Improving credit access for MSMEs through collateral-free lending, digital credit scoring, and green finance instruments.</div>
+          </div>
+          <span class="ramp-comp-tag">Component</span>
+        </div>
+        <div class="ramp-comp">
+          <div class="ramp-comp-num">03</div>
+          <div class="ramp-comp-body">
+            <div class="ramp-comp-title">Market Access &amp; Exports</div>
+            <div class="ramp-comp-desc">Connecting MSMEs to domestic and international markets through e-commerce platforms and export facilitation.</div>
+          </div>
+          <span class="ramp-comp-tag">Component</span>
+        </div>
+        <div class="ramp-comp active">
+          <div class="ramp-comp-num">04</div>
+          <div class="ramp-comp-body">
+            <div class="ramp-comp-title">Greening MSMEs &amp; Technology</div>
+            <div class="ramp-comp-desc">Driving adoption of clean technologies, resource efficiency, and low-carbon practices across MSME clusters — this is the active initiative.</div>
+          </div>
+          <span class="ramp-comp-tag">This Initiative</span>
+        </div>
+        <div class="ramp-comp">
+          <div class="ramp-comp-num">05</div>
+          <div class="ramp-comp-body">
+            <div class="ramp-comp-title">Skills &amp; Handholding</div>
+            <div class="ramp-comp-desc">Upskilling MSME workforce through targeted training, mentorship, and enterprise development services.</div>
+          </div>
+          <span class="ramp-comp-tag">Component</span>
+        </div>
+      </div>
+    </div>
     <!-- Implementing agencies logo strip -->
     <div class="ramp-agencies reveal">
       <div class="ramp-ag-label">Implementing Agencies</div>
