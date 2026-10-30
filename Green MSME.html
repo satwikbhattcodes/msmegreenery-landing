@@ -622,6 +622,21 @@
   .ramp-contact a{color:var(--moss);text-decoration:none}
   .ramp-contact a:hover{text-decoration:underline}
 
+  /* ===== RAMP flyers ===== */
+  .ramp-flyers{margin-top:52px;padding-top:36px;border-top:1px solid var(--line)}
+  .ramp-flyers-head{margin-bottom:24px}
+  .ramp-flyers-k{font-family:var(--ff-mono);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--moss);margin-bottom:8px}
+  .ramp-flyers-head h3{font-family:var(--ff-serif);font-size:clamp(22px,2.4vw,30px);font-weight:600;letter-spacing:-.02em;line-height:1.15}
+  .ramp-flyers-head p{font-size:14px;color:rgba(14,26,20,.68);line-height:1.6;max-width:56ch;margin-top:8px}
+  .ramp-flyer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:760px}
+  .ramp-flyer{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px;transition:border-color .2s,box-shadow .2s}
+  .ramp-flyer:hover{border-color:var(--moss);box-shadow:0 6px 24px rgba(58,122,82,.14)}
+  .ramp-flyer img{width:100%;height:auto;display:block;border-radius:4px}
+  .ramp-flyer figcaption{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 4px 2px}
+  .ramp-flyer-lang{font-family:var(--ff-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(14,26,20,.6)}
+  .ramp-flyer-dl{font-family:var(--ff-mono);font-size:10px;letter-spacing:.08em;color:var(--forest);text-decoration:none;border:1px solid rgba(58,122,82,.3);border-radius:999px;padding:4px 10px}
+  .ramp-flyer-dl:hover{background:rgba(58,122,82,.1)}
+
   /* ===== TEAM ===== */
   #team{background:var(--parchment);color:var(--ink)}
   .team-head{max-width:720px;margin:0 0 44px}
@@ -980,6 +995,37 @@
             <a href="tel:+919989992902">+91 99899 92902</a>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Programme flyers -->
+    <div class="ramp-flyers reveal">
+      <div class="ramp-flyers-head">
+        <div>
+          <div class="ramp-flyers-k">Programme flyer</div>
+          <h3>RAMP benefits, explained on one page</h3>
+          <p>The same offer in print — challenges, the free support services and what your enterprise gains. Open or download a copy to share with your cluster.</p>
+        </div>
+      </div>
+      <div class="ramp-flyer-grid">
+        <figure class="ramp-flyer">
+          <a href="flyers/ramp-flyer-en.jpg" target="_blank" rel="noopener">
+            <img src="flyers/ramp-flyer-en.jpg" alt="RAMP programme flyer in English: challenges, programme support worth 10 lakh rupees free, and benefits to MSMEs" loading="lazy" decoding="async"/>
+          </a>
+          <figcaption>
+            <span class="ramp-flyer-lang">English</span>
+            <a class="ramp-flyer-dl" href="flyers/ramp-flyer-en.jpg" download>Download ↓</a>
+          </figcaption>
+        </figure>
+        <figure class="ramp-flyer">
+          <a href="flyers/ramp-flyer-te.jpg" target="_blank" rel="noopener">
+            <img src="flyers/ramp-flyer-te.jpg" alt="RAMP programme flyer in Telugu" loading="lazy" decoding="async"/>
+          </a>
+          <figcaption>
+            <span class="ramp-flyer-lang">తెలుగు · Telugu</span>
+            <a class="ramp-flyer-dl" href="flyers/ramp-flyer-te.jpg" download>Download ↓</a>
+          </figcaption>
+        </figure>
       </div>
     </div>
 
